@@ -16,7 +16,7 @@
 # define SUCCESS					0
 # define FAIL						1
 
-# define HEIGH	720
+# define HEIGHT	720
 # define WIDTH	1280
 
 # include <stdlib.h>

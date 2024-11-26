@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/cub3d.h"
+#include "../include/cub3d.h"
 
 int	raycasting_entry(t_map_param *info)
 {

@@ -15,13 +15,14 @@
 int	main(void)
 {
 	t_data data;
-	t_map_param	*info;
+	//t_map_param	*info;
 
 	init_data(&data);
-	info = malloc(sizeof(t_map_param));
-	if (!info)
-		return (FAIL);
-	if (raycasting_entry(info) == FAIL)
-		return (FAIL);
-	return (SUCCESS);
+	// info = malloc(sizeof(t_map_param));
+	// if (!info)
+	// 	return (FAIL);
+	// if (raycasting_entry(info) == FAIL)
+	// 	return (FAIL);
+	// return (SUCCESS);
+	mlx_loop(data.mlx);
 }
