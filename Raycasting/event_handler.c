@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   event_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
+/*   By: raphael <raphael@student.42.fr>            #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 13:38:52 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/28 13:49:07 by almarico         ###   ########.fr       */
+/*   Created: 2024-11-28 14:41:41 by raphael           #+#    #+#             */
+/*   Updated: 2024-11-28 14:41:41 by raphael          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../include/cub3d.h"
 
