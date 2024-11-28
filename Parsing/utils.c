@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-26 12:49:11 by raphael           #+#    #+#             */
-/*   Updated: 2024/11/28 13:45:00 by almarico         ###   ########.fr       */
+/*   Created: 2024/11/28 13:40:02 by almarico          #+#    #+#             */
+/*   Updated: 2024/11/28 13:40:15 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	main(void)
+void	write_message(const char *msg)
 {
-	return (SUCCESS);
+	write(STDERR, msg, ft_strlen(msg));
 }

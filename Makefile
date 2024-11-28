@@ -5,7 +5,7 @@ CC = cc
 
 FLAGS = -g -Wall -Wextra -Werror
 
-MLX_DIR = ./mlx
+MLX_DIR = ./include/mlx
 MLX_LIB = ${MLX_DIR}/libmlx.a
 MLX_FLAG = -lm -lmlx -lX11 -lXext
 
@@ -15,8 +15,14 @@ LIBFT_FLAG = -lft_complete
 
 INCLUDES = -I ./Includes/
 
-PARSING_SOURCES = ./Parsing/main.c
-RAYCASTING_SOURCES = ./Raycasting/raycasting_entry.c
+PARSING_SOURCES = ./Parsing/main.c\
+				  ./Parsing/utils.c
+					
+RAYCASTING_SOURCES = ./Raycasting/raycasting_entry.c\
+					 ./Raycasting/init_mlx.c\
+					 ./Raycasting/color_writing.c\
+					 ./Raycasting/event_handler.c\
+					 ./Raycasting/image_handler.c
 
 PARSING_OBJ_PATH = obj/Parsing/
 RAYCASTING_OBJ_PATH = obj/Raycasting/
