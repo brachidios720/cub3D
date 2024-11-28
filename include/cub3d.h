@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/28 14:13:36 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/28 15:14:15 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <math.h>
 # include <fcntl.h>
 # include <sys/types.h>
-# include <_x11/keysym.h>
-# include <_x11/X.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 # include "./mlx/mlx.h"
 # include "./mlx/mlx_int.h"
 # include "../libft-complete/libft/libft.h"
