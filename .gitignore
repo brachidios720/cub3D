@@ -1,0 +1,8 @@
+# ignore object
+*.o
+
+#ignore lib
+*.a
+
+#ignore exec
+cub3D

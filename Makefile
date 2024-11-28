@@ -16,9 +16,13 @@ LIBFT_FLAG = -lft_complete
 INCLUDES = -I ./Includes/
 
 PARSING_SOURCES = ./Parsing/main.c\
-					./Parsing/init.c
+				  ./Parsing/utils.c
 					
-RAYCASTING_SOURCES = ./Raycasting/raycasting_entry.c
+RAYCASTING_SOURCES = ./Raycasting/raycasting_entry.c\
+					 ./Raycasting/init_mlx.c\
+					 ./Raycasting/color_writing.c\
+					 ./Raycasting/event_handler.c\
+					 ./Raycasting/image_handler.c
 
 PARSING_OBJ_PATH = obj/Parsing/
 RAYCASTING_OBJ_PATH = obj/Raycasting/
