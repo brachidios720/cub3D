@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_format.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-26 12:49:11 by raphael           #+#    #+#             */
-/*   Updated: 2024/11/28 20:51:08 by almarico         ###   ########.fr       */
+/*   Created: 2024/11/28 18:51:40 by almarico          #+#    #+#             */
+/*   Updated: 2024/11/28 20:00:05 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	main(int argc, char **argv)
+int	check_cub_format(char *str)
 {
-	t_info	info;
-	int		fd_map;
+	int	i;
 
-	(void)info;
-	if (argc != 2)
-		return (write_message(ERR_ARG), FAIL);
-	argv++;
-	if (check_cub_format(*argv) == FAIL)
+	i = ft_strlen(str) - 1;
+	if (str[i - 3] != '.' && str[i - 2] != 'c'
+		&& str[i - 1] != 'u' && str[i] != 'b')
 		return (FAIL);
-	if (check_opening(*argv, &fd_map) == FAIL)
-		return (FAIL);
-	if (get_map_info(fd_map) == FAIL)
+	return (SUCCESS);
+}
+
+int	check_xpm_format(char *str)
+{
+	int	i;
+
+	i = ft_strlen(str) - 1;
+	if (str[i - 3] != '.' && str[i - 2] != 'x'
+		&& str[i - 1] != 'p' && str[i] != 'm')
 		return (FAIL);
 	return (SUCCESS);
 }

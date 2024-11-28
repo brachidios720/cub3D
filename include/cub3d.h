@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/28 18:25:26 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:16:33 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@
 
 /* error define */
 # define ERR_MALLOC					"An error occured during the malloc\n"
+# define ERR_ARG					"The number or arguments is different from two\n"
+# define ERR_DIR					"Error occur while opening: argument is a directory\n"
+# define ERR_OPEN					"Error occur while opening: the oppening fail\n"
+# define ERR_EMPTY					"Error occur while reading: the map is empty\n"
 
 /* other define */
 # define HEIGHT	720
@@ -138,6 +142,8 @@ typedef struct s_render
 	int	drawend;		// End point for drawing the wall slice
 }				t_render;
 
+/* global structure */
+
 typedef struct s_info
 {
 	t_window	*mlx;
@@ -178,5 +184,15 @@ void						write_message(const char *msg);
 void						free_info(t_info *info);
 void						free_double_int(int **tab, int size);
 void						free_double_tab(char **tab);
+void						free_list(t_list **lst);
+
+/* check_format.c */
+int							check_cub_format(char *str);
+
+/* check_opening.c */
+int							check_opening(char *str, int *fd);
+
+/* get_map_info.c */
+int							get_map_info(int fd);
 
 #endif // !CUB3D_H

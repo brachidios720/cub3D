@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_opening.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-26 12:49:11 by raphael           #+#    #+#             */
-/*   Updated: 2024/11/28 20:51:08 by almarico         ###   ########.fr       */
+/*   Created: 2024/11/28 20:01:04 by almarico          #+#    #+#             */
+/*   Updated: 2024/11/28 20:48:18 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	main(int argc, char **argv)
+int	check_opening(char *str, int *fd)
 {
-	t_info	info;
-	int		fd_map;
-
-	(void)info;
-	if (argc != 2)
-		return (write_message(ERR_ARG), FAIL);
-	argv++;
-	if (check_cub_format(*argv) == FAIL)
-		return (FAIL);
-	if (check_opening(*argv, &fd_map) == FAIL)
-		return (FAIL);
-	if (get_map_info(fd_map) == FAIL)
-		return (FAIL);
+	*fd = open(str, O_DIRECTORY);
+	if (*fd != -1 && *fd > 2)
+		return (close(*fd), write_message(ERR_DIR), FAIL);
+	*fd = open(str, O_RDONLY);
+	if (*fd == -1)
+		return (write_message(ERR_OPEN), FAIL);
 	return (SUCCESS);
 }

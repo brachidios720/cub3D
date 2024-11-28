@@ -17,7 +17,10 @@ INCLUDES = -I ./Includes/
 
 PARSING_SOURCES = ./Parsing/main.c\
 				  ./Parsing/utils.c\
-				  ./Parsing/free_utils.c
+				  ./Parsing/free_utils.c\
+				  ./Parsing/check_format.c\
+				  ./Parsing/check_opening.c\
+				  ./Parsing/get_map_info.c
 					
 RAYCASTING_SOURCES = ./Raycasting/raycasting_entry.c\
 					 ./Raycasting/init_mlx.c\
