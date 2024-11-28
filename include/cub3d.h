@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/28 15:14:15 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/28 18:25:26 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,9 @@ typedef struct s_texture
 
 typedef struct s_map
 {
-	int	**grid;			// 2D array representing the map
-	int	width;			// Map width
-	int	height;			// Map height
+	char	**grid;			// 2D array representing the map
+	int		width;			// Map width
+	int		height;			// Map height
 }				t_map;
 
 typedef struct s_render
@@ -147,6 +147,7 @@ typedef struct s_info
 	t_render	render;		// Rendering parameters
 	t_texture	texture;	// Texture data
 	int			**buffer;	// Framebuffer for rendering
+	int			buffer_size;
 	int			isrunning;	// Game loop flag
 }				t_info;
 
@@ -172,5 +173,10 @@ int							display(t_info *info);
 
 /* utils.c */
 void						write_message(const char *msg);
+
+/* free_utils.c */
+void						free_info(t_info *info);
+void						free_double_int(int **tab, int size);
+void						free_double_tab(char **tab);
 
 #endif // !CUB3D_H
