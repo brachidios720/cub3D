@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/28 21:16:33 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/29 13:59:29 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@
 # define ERR_DIR					"Error occur while opening: argument is a directory\n"
 # define ERR_OPEN					"Error occur while opening: the oppening fail\n"
 # define ERR_EMPTY					"Error occur while reading: the map is empty\n"
+# define ERR_COPY					"Error occur while copying the map\n"
 
 /* other define */
 # define HEIGHT	720
@@ -157,6 +158,13 @@ typedef struct s_info
 	int			isrunning;	// Game loop flag
 }				t_info;
 
+typedef struct s_parse
+{
+	int			fd_map;
+	int			fd_texture;
+	char		*tab[128];
+}				t_parse;
+
 /* raycasting_entry.c */
 int							raycasting_entry(t_info *info);
 
@@ -193,6 +201,9 @@ int							check_cub_format(char *str);
 int							check_opening(char *str, int *fd);
 
 /* get_map_info.c */
-int							get_map_info(int fd);
+int							get_map_info(t_parse *parsing);
+
+/* fill_info.c */
+int							fill_info(t_info *info, t_parse *parsing);
 
 #endif // !CUB3D_H
