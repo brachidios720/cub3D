@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:27:38 by almarico          #+#    #+#             */
-/*   Updated: 2024/06/19 14:36:01 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/30 13:41:14 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void			ft_bzero(void *s, size_t n);
 char			**ft_split(char const *s, char c);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
+char			*ft_strstr(char *str, char *to_find);
 char			*ft_strnstr(const char *big, const char *little, size_t len);
 char			*ft_strdup(const char *s);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
@@ -74,6 +75,7 @@ float			ft_atof(const char *string);
 int				ft_lstsize(t_list *lst);
 int				ft_atoi(const char *string);
 int				ft_atoi_base(char *str, char *base);
+int				ft_is_in_base(char c, char *base);
 int				ft_isalnum(int charactere);
 int				ft_isalpha(int charactere);
 int				ft_isascii(int c);

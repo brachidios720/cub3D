@@ -21,7 +21,11 @@ PARSING_SOURCES = ./Parsing/main.c\
 				  ./Parsing/check_format.c\
 				  ./Parsing/check_opening.c\
 				  ./Parsing/get_map_info.c\
-				  ./Parsing/fill_info.c
+				  ./Parsing/fill_info.c\
+				  ./Parsing/fill_texture.c\
+				  ./Parsing/fill_color.c\
+				  ./Parsing/fill_map.c\
+				  ./Parsing/fill_player.c
 					
 RAYCASTING_SOURCES = ./Raycasting/raycasting_entry.c\
 					 ./Raycasting/init_mlx.c\

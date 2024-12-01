@@ -6,7 +6,7 @@
 #    By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/20 15:09:47 by almarico          #+#    #+#              #
-#    Updated: 2024/06/19 14:36:17 by almarico         ###   ########.fr        #
+#    Updated: 2024/11/30 13:25:37 by almarico         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,7 @@ SRCS =	./ft_atof.c\
 	./ft_strlen.c\
 	./ft_strmapi.c\
 	./ft_strncmp.c\
+	./ft_strstr.c\
 	./ft_strnstr.c\
 	./ft_strrchr.c\
 	./ft_strtrim.c\

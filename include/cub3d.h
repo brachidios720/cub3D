@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/29 13:59:29 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/30 23:26:48 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 /* general & error defines */
 # define SUCCESS					0
 # define FAIL						1
+# define TRUE						1
+# define FALSE						0
 # define CONTINUE					0
 # define STOP						1
 # define STDIN						0
@@ -55,14 +57,34 @@
 /* error define */
 # define ERR_MALLOC					"An error occured during the malloc\n"
 # define ERR_ARG					"The number or arguments is different from two\n"
+# define ERR_CUB_FORMAT				"Error: the map is not a .cub format\n"
 # define ERR_DIR					"Error occur while opening: argument is a directory\n"
-# define ERR_OPEN					"Error occur while opening: the oppening fail\n"
+# define ERR_OPEN					"Error occur while opening: the opening fail\n"
 # define ERR_EMPTY					"Error occur while reading: the map is empty\n"
 # define ERR_COPY					"Error occur while copying the map\n"
+# define ERR_TEXTURE_EXIST			"Error occur while init the texture: texture already init\n"
+# define ERR_XPM					"Error occur while opening: xpm to image failed\n"
+# define ERR_NO_XPM					"Error occur while reading: there is no xpm\n"
+# define ERR_XPM_FORMAT				"Error: the texture is not a .xpm format\n"
 
 /* other define */
 # define HEIGHT	720
 # define WIDTH	1280
+
+/* parsing define */
+# define MAP_CHARSET				"01NSEW"
+# define NORTH						"NO"
+# define EAST						"EA"
+# define SOUTH						"SO"
+# define WEST						"WE"
+# define FLOOR						"F"
+# define CEILING					"C"
+
+/* define textures */
+# define T_NORTH					0
+# define T_EAST						1
+# define T_SOUTH					2
+# define T_WEST						3
 
 /* mlx structure */
 typedef struct s_img_info
@@ -132,6 +154,8 @@ typedef struct s_map
 	char	**grid;			// 2D array representing the map
 	int		width;			// Map width
 	int		height;			// Map height
+	int		ceiling_color;
+	int		floor_color;
 }				t_map;
 
 typedef struct s_render
@@ -152,7 +176,7 @@ typedef struct s_info
 	t_ray		ray;		// Raycasting variables
 	t_map		map;		// Map data
 	t_render	render;		// Rendering parameters
-	t_texture	texture;	// Texture data
+	t_texture	texture[4];	// Texture data
 	int			**buffer;	// Framebuffer for rendering
 	int			buffer_size;
 	int			isrunning;	// Game loop flag
@@ -196,6 +220,7 @@ void						free_list(t_list **lst);
 
 /* check_format.c */
 int							check_cub_format(char *str);
+int							check_xpm_format(char *str);
 
 /* check_opening.c */
 int							check_opening(char *str, int *fd);
@@ -205,5 +230,12 @@ int							get_map_info(t_parse *parsing);
 
 /* fill_info.c */
 int							fill_info(t_info *info, t_parse *parsing);
+int							contain_only_isspace(char *line);
+
+/* fill_texture.c */
+int							fill_texture(t_info *info, t_parse *parsing, char *line);
+
+/* fill_color.c */
+int							fill_color(t_info *info, t_parse *parsing, char *line);
 
 #endif // !CUB3D_H

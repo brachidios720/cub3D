@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:32:55 by almarico          #+#    #+#             */
-/*   Updated: 2024/08/20 11:56:59 by almarico         ###   ########.fr       */
+/*   Updated: 2024/11/30 13:40:48 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	ft_check_base(char *base)
 	return (0);
 }
 
-static int	ft_is_in_base(char c, char *base)
+int	ft_is_in_base(char c, char *base)
 {
 	int	j;
 
