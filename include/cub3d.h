@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/30 23:26:48 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:26:22 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define FAIL						1
 # define TRUE						1
 # define FALSE						0
-# define CONTINUE					0
-# define STOP						1
+# define CONTINUE					1
+# define STOP						0
 # define STDIN						0
 # define STDOUT						1
 # define STDERR						2
@@ -66,6 +66,11 @@
 # define ERR_XPM					"Error occur while opening: xpm to image failed\n"
 # define ERR_NO_XPM					"Error occur while reading: there is no xpm\n"
 # define ERR_XPM_FORMAT				"Error: the texture is not a .xpm format\n"
+# define ERR_CHAR_MAP				"Error: there is other character in the map than \"\\t 01NSEW\"\n"
+# define ERR_MULTIPLE_PLAYER		"Error: there are multiple player in the map\n"
+# define ERR_NO_PLAYER				"Error: no player in the map\n"
+# define ERR_NO_SPACE				"Error: there are no space for the player to play\n"
+# define ERR_MAP					"Error: the map is not surrounded by wall\n"
 
 /* other define */
 # define HEIGHT	720
@@ -119,6 +124,7 @@ typedef struct s_player
 	double	plane_y;		// Camera plane vector _y
 	double	move_speed;	// Movement speed
 	double	rot_speed;	// Rotation speed
+	char	facing;
 }				t_player;
 
 typedef struct s_ray
@@ -211,6 +217,7 @@ int							display(t_info *info);
 
 /* utils.c */
 void						write_message(const char *msg);
+int							flood_fill(char **map_copy, int row, int col, t_map map);
 
 /* free_utils.c */
 void						free_info(t_info *info);
@@ -237,5 +244,8 @@ int							fill_texture(t_info *info, t_parse *parsing, char *line);
 
 /* fill_color.c */
 int							fill_color(t_info *info, t_parse *parsing, char *line);
+
+/* fill_map.c */
+int							fill_map(t_info *info, t_parse *parsing, int *i);
 
 #endif // !CUB3D_H
