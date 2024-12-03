@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:43:41 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/30 22:06:48 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:12:28 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,19 @@ static int	get_texture(t_info *info, t_texture *texture, char *line)
 	i = 0;
 	while (tmp[i] && ft_isspace(tmp[i]) != 0)
 		i++;
-	filename = ft_substr(tmp, 0, i - 1);
+	filename = ft_substr(tmp, 0, i);
 	if (!filename)
 		return (free(tmp), write_message(ERR_MALLOC), FAIL);
 	if (check_xpm_format(filename) == FAIL)
-		return (free(tmp), free(filename), write_message(ERR_XPM_FORMAT), FAIL);
-	texture->data = mlx_xpm_file_to_image(info->mlx->window, filename, &texture->width, &texture->height);
+		return (free(filename), write_message(ERR_XPM_FORMAT), FAIL);
+	texture->data = mlx_xpm_file_to_image(info->mlx->init_ptr, filename, &texture->width, &texture->height);
 	if (!texture->data)
-		return (free(tmp), free(filename), write_message(ERR_XPM), FAIL);
-	free(tmp);
+		return (free(filename), write_message(ERR_XPM), FAIL);
 	free(filename);
 	return (SUCCESS);
 }
 
-int	fill_texture(t_info *info, t_parse *parsing, char *line)
+int	fill_texture(t_info *info, char *line)
 {
 	int	texture_index;
 

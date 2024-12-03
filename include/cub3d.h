@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/02 15:26:22 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/02 17:57:36 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,12 +240,19 @@ int							fill_info(t_info *info, t_parse *parsing);
 int							contain_only_isspace(char *line);
 
 /* fill_texture.c */
-int							fill_texture(t_info *info, t_parse *parsing, char *line);
+int							fill_texture(t_info *info, char *line);
 
 /* fill_color.c */
-int							fill_color(t_info *info, t_parse *parsing, char *line);
+int							fill_color(t_info *info, char *line);
 
 /* fill_map.c */
+int							everything_is_set(t_info *info);
 int							fill_map(t_info *info, t_parse *parsing, int *i);
+
+/* fill_player.c */
+int							fill_player(t_info *info);
+
+/* init_info.c */
+int							init_info(t_info *info);
 
 #endif // !CUB3D_H

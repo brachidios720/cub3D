@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:01:52 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/28 21:16:21 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:43:43 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	free_info(t_info *info)
 {
 	free_double_tab(info->map.grid);
 	free_double_int(info->buffer, info->buffer_size);
-	free(info->texture.data);
+	mlx_destroy_image(info->mlx->init_ptr, info->texture[T_NORTH].data);
+	mlx_destroy_image(info->mlx->init_ptr, info->texture[T_EAST].data);
+	mlx_destroy_image(info->mlx->init_ptr, info->texture[T_SOUTH].data);
+	mlx_destroy_image(info->mlx->init_ptr, info->texture[T_WEST].data);
 }
 
 void	free_list(t_list **lst)

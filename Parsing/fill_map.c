@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:43:21 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/02 13:01:37 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/02 20:22:23 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	fill_map(t_info *info, t_parse *parsing, int *i)
 	int	j;
 
 	start = *i;
-	if (everything_is_set(info) == FALSE)
+	if (everything_is_set(info) == FAIL)
 		return (FAIL);
 	while (parsing->tab[*i])
 	{
@@ -43,10 +43,9 @@ int	fill_map(t_info *info, t_parse *parsing, int *i)
 	info->map.height = *i - start + 1;
 	info->map.grid[*i - start] = NULL;
 	j = 0;
-	while (info->map.grid[j])
+	while (start < *i)
 		info->map.grid[j++] = ft_strdup(parsing->tab[start++]);
 	info->map.width = ft_strlen(info->map.grid[0]);
 	free_double_tab(parsing->tab);
-	free(parsing->tab);
 	return (SUCCESS);
 }

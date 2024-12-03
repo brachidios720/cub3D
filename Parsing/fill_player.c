@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 22:46:19 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/02 15:27:56 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/03 12:34:25 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,19 +83,20 @@ int	check_map_delimitation(char **grid, t_map map)
 	int		i;
 	int		j;
 
-	map_copy = malloc(map.height * sizeof(char *));
+	map_copy = malloc((map.height + 1) * sizeof(char *));
 	if (!map_copy)
 		return (write_message(ERR_MALLOC), FAIL);
 	i = -1;
 	while (grid[++i])
 		map_copy[i] = ft_strdup(grid[i]);
-	i = 0;
-	while (map_copy[i])
+	map_copy[i] = NULL;
+	i = -1;
+	while (map_copy[++i] != NULL)
 	{
-		j = 0;
-		while (map_copy[i][j])
+		j = -1;
+		while (map_copy[i][++j])
 		{
-			if (map_copy[i][j] == '0' || map_copy[i][j] == 'N' || map_copy[i][j] == 'E'
+			if (map_copy[i][j] == 'N' || map_copy[i][j] == 'E'
 			|| map_copy[i][j] == 'S' || map_copy[i][j] == 'W')
 			{
 				if (flood_fill(map_copy, i, j, map) == STOP)
