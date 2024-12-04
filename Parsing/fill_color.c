@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:42:51 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/03 11:13:46 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:43:48 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,15 @@ int	fill_color(t_info *info, char *line)
 	if (ft_strstr(line, FLOOR))
 	{
 		get_rgb(line, &r, &g, &b);
+		if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+			return (write_message(ERR_COLOR), FAIL);
 		info->map.floor_color = set_color(0, r, g, b);
 	}
 	else if (ft_strstr(line, CEILING))
 	{
 		get_rgb(line, &r, &g, &b);
+		if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
+			return (write_message(ERR_COLOR), FAIL);
 		info->map.ceiling_color = set_color(0, r, g, b);
 	}
 	return (SUCCESS);

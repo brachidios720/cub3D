@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 16:55:06 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:49:42 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,21 +56,34 @@
 
 /* error define */
 # define ERR_MALLOC					"An error occured during the malloc\n"
-# define ERR_ARG					"The number or arguments is different from two\n"
+# define ERR_ARG					"The number or arguments is different \
+from two\n"
 # define ERR_CUB_FORMAT				"Error: the map is not a .cub format\n"
-# define ERR_DIR					"Error occur while opening: argument is a directory\n"
-# define ERR_OPEN					"Error occur while opening: the opening fail\n"
-# define ERR_EMPTY					"Error occur while reading: the map is empty\n"
+# define ERR_DIR					"Error occur while opening: argument is \
+a directory\n"
+# define ERR_OPEN					"Error occur while opening: the opening \
+fail\n"
+# define ERR_EMPTY					"Error occur while reading: the map is \
+empty\n"
 # define ERR_COPY					"Error occur while copying the map\n"
-# define ERR_TEXTURE_EXIST			"Error occur while init the texture: texture already init\n"
-# define ERR_XPM					"Error occur while opening: xpm to image failed\n"
-# define ERR_NO_XPM					"Error occur while reading: there is no xpm\n"
-# define ERR_XPM_FORMAT				"Error: the texture is not a .xpm format\n"
-# define ERR_CHAR_MAP				"Error: there is other character in the map than \"\\t 01NSEW\"\n"
-# define ERR_MULTIPLE_PLAYER		"Error: there are multiple player in the map\n"
+# define ERR_TEXTURE_EXIST			"Error occur while init the texture: \
+texture already init\n"
+# define ERR_XPM					"Error occur while opening: xpm to image \
+failed\n"
+# define ERR_NO_XPM					"Error occur while reading: there is \
+no xpm\n"
+# define ERR_XPM_FORMAT				"Error: the texture is not a .xpm \
+format\n"
+# define ERR_CHAR_MAP				"Error: there is other character in the \
+map than \"\\t 01NSEW\"\n"
+# define ERR_MULTIPLE_PLAYER		"Error: there are multiple player in \
+the map\n"
 # define ERR_NO_PLAYER				"Error: no player in the map\n"
-# define ERR_NO_SPACE				"Error: there are no space for the player to play\n"
+# define ERR_NO_SPACE				"Error: there are no space for the player \
+to play\n"
 # define ERR_MAP					"Error: the map is not surrounded by wall\n"
+# define ERR_COLOR					"Error: r, g or b are not in the range \
+0-255\n"
 
 /* other define */
 # define HEIGHT	720
@@ -199,7 +212,8 @@ typedef struct s_parse
 int							raycasting_entry(t_info *info);
 
 /* color_writing.c */
-void						set_pixel_color(t_img_info img, int pos_x, int pos_y, int color);
+void						set_pixel_color(t_img_info img, int pos_x, \
+							int pos_y, int color);
 
 /* event_handler.c */
 void						destroy_image(t_window *mlx);
@@ -217,7 +231,9 @@ int							display(t_info *info);
 
 /* utils.c */
 void						write_message(const char *msg);
-int							flood_fill(char **map_copy, int row, int col, t_map map);
+int							flood_fill(char **map_copy, int row, \
+							int col, t_map map);
+void						printf_map(char **map);
 
 /* free_utils.c */
 void						free_info(t_info *info);
@@ -255,6 +271,4 @@ int							fill_player(t_info *info);
 /* init_info.c */
 int							init_info(t_info *info);
 
-// debug
-void						printf_map(char **map);
 #endif // !CUB3D_H

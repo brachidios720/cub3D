@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:43:41 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/02 17:12:28 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:45:56 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static int	get_texture(t_info *info, t_texture *texture, char *line)
 		return (free(tmp), write_message(ERR_MALLOC), FAIL);
 	if (check_xpm_format(filename) == FAIL)
 		return (free(filename), write_message(ERR_XPM_FORMAT), FAIL);
-	texture->data = mlx_xpm_file_to_image(info->mlx->init_ptr, filename, &texture->width, &texture->height);
+	texture->data = mlx_xpm_file_to_image(info->mlx->init_ptr, filename, \
+									&texture->width, &texture->height);
 	if (!texture->data)
 		return (free(filename), write_message(ERR_XPM), FAIL);
 	free(filename);

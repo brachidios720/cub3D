@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 22:46:19 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 10:14:49 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:56:34 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	check_lines(char **map)
 	while (map[i])
 	{
 		j = 0;
-		while (map[i][j] && ft_is_in_base(map[i][j], "\t 01NSEW") == 0)
+		while (map[i][j] && ft_is_in_base(map[i][j], "\t 01NSEW\n") == 0)
 			j++;
-		if (map[i][j] && ft_is_in_base(map[i][j], "\t 01NSEW") == 1)
+		if (map[i][j] && ft_is_in_base(map[i][j], "\t 01NSEW\n") == 1)
 			return (write_message(ERR_CHAR_MAP), FAIL);
 		i++;
 	}
@@ -80,12 +80,6 @@ int	check_player_position(t_map map, t_player player)
 	return (write_message(ERR_NO_SPACE), FAIL);
 }
 
-void	printf_map(char **map)
-{
-	for (int i = 0; map[i]; i++)
-		printf("%s", map[i]);
-}
-
 int	check_map_delimitation(char **grid, t_map map)
 {
 	char	**map_copy;
@@ -108,11 +102,10 @@ int	check_map_delimitation(char **grid, t_map map)
 			if (map_copy[i][j] == 'N' || map_copy[i][j] == 'E'
 			|| map_copy[i][j] == 'S' || map_copy[i][j] == 'W')
 				if (flood_fill(map_copy, i, j, map) == STOP)
-					return (printf_map(map_copy), free_double_tab(map_copy),
+					return (free_double_tab(map_copy),
 						free(map_copy), write_message(ERR_MAP), FAIL);
 		}
 	}
-	printf_map(map_copy);
 	return (free_double_tab(map_copy), free(map_copy), SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:58:21 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 17:51:53 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:53:25 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	fill_info(t_info *info, t_parse *parsing)
 		if (contain_only_isspace(parsing->tab[i]) != TRUE
 			&& everything_is_set(info) == FAIL)
 			if (check_line(info, parsing->tab[i]) == FAIL)
-				return (FAIL);
+				return (free_double_tab(parsing->tab), FAIL);
 		if (everything_is_set(info) == SUCCESS)
 			break ;
 	}
