@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 22:46:19 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 18:56:34 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:00:07 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	check_lines(char **map)
 	while (map[i])
 	{
 		j = 0;
-		while (map[i][j] && ft_is_in_base(map[i][j], "\t 01NSEW\n") == 0)
+		while (map[i][j] && ft_is_in_base(map[i][j], " 01NSEW\n") == 0)
 			j++;
-		if (map[i][j] && ft_is_in_base(map[i][j], "\t 01NSEW\n") == 1)
+		if (map[i][j] && ft_is_in_base(map[i][j], " 01NSEW\n") == 1)
 			return (write_message(ERR_CHAR_MAP), FAIL);
 		i++;
 	}

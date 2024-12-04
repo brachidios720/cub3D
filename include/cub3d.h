@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 18:49:42 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:00:37 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ no xpm\n"
 # define ERR_XPM_FORMAT				"Error: the texture is not a .xpm \
 format\n"
 # define ERR_CHAR_MAP				"Error: there is other character in the \
-map than \"\\t 01NSEW\"\n"
+map than \" 01NSEW\"\n"
 # define ERR_MULTIPLE_PLAYER		"Error: there are multiple player in \
 the map\n"
 # define ERR_NO_PLAYER				"Error: no player in the map\n"
