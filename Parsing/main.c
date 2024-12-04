@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024-11-26 12:49:11 by raphael           #+#    #+#             */
-/*   Updated: 2024/12/03 12:36:03 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 09:53:46 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv)
 		return (FAIL);
 	init_info(&info);
 	if (fill_info(&info, &parsing) == FAIL)
-		return (FAIL);
+		return (free_info(&info), FAIL);
 	raycasting_entry(&info);
 	return (SUCCESS);
 }

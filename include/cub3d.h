@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/02 17:57:36 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 16:55:06 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,4 +255,6 @@ int							fill_player(t_info *info);
 /* init_info.c */
 int							init_info(t_info *info);
 
+// debug
+void						printf_map(char **map);
 #endif // !CUB3D_H

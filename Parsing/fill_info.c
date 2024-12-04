@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 13:58:21 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/02 19:40:35 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:51:53 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	fill_info(t_info *info, t_parse *parsing)
 				if (fill_map(info, parsing, &i) == FAIL)
 					return (FAIL);
 	}
+	free_double_tab(parsing->tab);
 	if (everything_is_set(info) == FAIL || fill_player(info) == FAIL)
 		return (FAIL);
 	return (SUCCESS);

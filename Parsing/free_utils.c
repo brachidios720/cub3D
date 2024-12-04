@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:01:52 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/03 12:43:43 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 09:52:40 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ void	free_double_tab(char **tab)
 	int	i;
 
 	i = 0;
-	while (tab[i])
-		free(tab[i++]);
+	if (tab)
+	{
+		while (tab[i])
+			free(tab[i++]);
+	}
 }
 
 void	free_double_int(int **tab, int size)
@@ -32,25 +35,25 @@ void	free_double_int(int **tab, int size)
 
 void	free_info(t_info *info)
 {
-	free_double_tab(info->map.grid);
-	free_double_int(info->buffer, info->buffer_size);
-	mlx_destroy_image(info->mlx->init_ptr, info->texture[T_NORTH].data);
-	mlx_destroy_image(info->mlx->init_ptr, info->texture[T_EAST].data);
-	mlx_destroy_image(info->mlx->init_ptr, info->texture[T_SOUTH].data);
-	mlx_destroy_image(info->mlx->init_ptr, info->texture[T_WEST].data);
-}
-
-void	free_list(t_list **lst)
-{
-	t_list	*nav;
-
-	while (*lst)
+	if (info->map.grid)
 	{
-		nav = (*lst)->next;
-		free((*lst)->content);
-		free((*lst));
-		*lst = nav;
+		free_double_tab(info->map.grid);
+		free(info->map.grid);
 	}
-	free(*lst);
-	*lst = NULL;
+	free_double_int(info->buffer, info->buffer_size);
+	if (info->mlx)
+	{
+		if (info->texture[T_NORTH].data)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_NORTH].data);
+		if (info->texture[T_EAST].data)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_EAST].data);
+		if (info->texture[T_SOUTH].data)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_SOUTH].data);
+		if (info->texture[T_WEST].data)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_WEST].data);
+		mlx_destroy_window(info->mlx->init_ptr, info->mlx->window);
+		mlx_destroy_display(info->mlx->init_ptr);
+		free(info->mlx->init_ptr);
+		free(info->mlx);
+	}
 }
