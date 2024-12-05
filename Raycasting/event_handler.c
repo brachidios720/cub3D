@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 13:38:52 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/28 13:49:07 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:32:58 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,7 @@ void	redraw_window(t_window *mlx)
 int	closes(t_info *info)
 {
 	mlx_destroy_image(info->mlx->init_ptr, info->mlx->img.img_ptr);
-	mlx_destroy_window(info->mlx->init_ptr, info->mlx->window);
-	mlx_destroy_display(info->mlx->init_ptr);
-	free(info->mlx->init_ptr);
-	free_map(info->map);
-	free(info->mlx);
-	free_raycasting(info->raycasting);
-	free(info);
+	free_info(info);
 	exit(0);
 	return (0);
 }
@@ -47,13 +41,7 @@ int	key_handler(int keycode, t_info *info)
 	if (keycode == XK_Escape)
 	{
 		mlx_destroy_image(info->mlx->init_ptr, info->mlx->img.img_ptr);
-		mlx_destroy_window(info->mlx->init_ptr, info->mlx->window);
-		mlx_destroy_display(info->mlx->init_ptr);
-		free(info->mlx->init_ptr);
-		free_map(info->map);
-		free(info->mlx);
-		free_raycasting(info->raycasting);
-		free(info);
+		free_info(info);
 		exit(0);
 	}
 	return (0);
