@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
+# include <time.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include <sys/types.h>
 # include <X11/keysym.h>
@@ -44,6 +46,23 @@
 # define ON_EXPOSE					12
 # define ON_DESTROY					17
 
+/*keycode mac*/
+# define W_KEYM 					13
+# define S_KEYM 					1
+# define A_KEYM 					0
+# define D_KEYM 					2
+# define RIGHT_ARROW_KEYM 			124
+# define LEFT_ARROW_KEYM 			123
+
+/* keycode linux*/
+# define W_KEYL 					119
+# define S_KEYL 					115
+# define A_KEYL 					97
+# define D_KEYL 					100
+# define RIGHT_ARROW_KEYL 			65363
+# define LEFT_ARROW_KEYL 			65361
+
+
 /* color defines */
 # define COLOR_RED					0xFF0000
 # define COLOR_GREEN				0x00FF00
@@ -58,6 +77,8 @@
 /* other define */
 # define HEIGHT	720
 # define WIDTH	1280
+
+# define PI 3.14159265359
 
 /* mlx structure */
 typedef struct s_img_info
@@ -96,6 +117,7 @@ typedef struct s_player
 
 typedef struct s_ray
 {
+	double	camera_x;		// direction des rayons dands le champ raydir_x et y;
 	double	raydir_x;		// Direction of the ray X
 	double	raydir_y;		// Direction of the ray Y
 	double	deltadist_x;	// Distance ray travels to cross a grid cell X
@@ -124,7 +146,7 @@ typedef struct s_texture
 
 typedef struct s_map
 {
-	int	**grid;			// 2D array representing the map
+	char**grid;			// 2D array representing the map
 	int	width;			// Map width
 	int	height;			// Map height
 }				t_map;
@@ -146,15 +168,36 @@ typedef struct s_info
 	t_map		map;		// Map data
 	t_render	render;		// Rendering parameters
 	t_texture	texture;	// Texture data
+	double			time;
+	double			old_time;
+	double		frametime;
 	int			**buffer;	// Framebuffer for rendering
 	int			isrunning;	// Game loop flag
 }				t_info;
 
 /* raycasting_entry.c */
+void    					init_player(t_info *info);
+void    					calculate_ray_directions(t_info *info);
 int							raycasting_entry(t_info *info);
+void   						calculate_delta_distances_x(t_info *info);
+void    					calculate_delta_distances_y(t_info *info);
+void    					walk_on_x(t_info *info);
+void    					walk_on_y(t_info *info);
+void    					check_while_wall_hit(t_info *info);
+void    					search_the_camera_start_position(t_info *info);
+void    					check_projection_on_cameradist(t_info *info);
+void    					render_tall_for_texture(t_info *info);
+void    					calculate_ray_step_and_distances(t_info *info);
+int		   					ft_raycasting(t_info *info);
+void 						draw_wall_slice(t_info *info, int x,  t_window *window);
+void 						verLine(t_img_info img, int x, t_info *info, int color);
+void						redraw_and_clear_window(t_info *info);
+void    					count_fps_move_speed(t_info *info);	
+int    						check_handler_move(int keycode, t_info *info);
+int 						game_loop(t_info *info);
 
 /* color_writing.c */
-void						set_pixel_color(t_img_info img, int pos_x, int pos_y, int color);
+void						set_pixel_color(t_img_info img, int x, int y, int color);
 
 /* event_handler.c */
 void						destroy_image(t_window *mlx);
@@ -172,5 +215,6 @@ int							display(t_info *info);
 
 /* utils.c */
 void						write_message(const char *msg);
+unsigned long 				get_ticks(); 
 
 #endif // !CUB3D_H

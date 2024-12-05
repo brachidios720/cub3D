@@ -14,11 +14,13 @@
 
 int	raycasting_entry(t_info *info)
 {
+
 	info->mlx = malloc(sizeof(t_window));
 	if (!info->mlx)
 		return (write_message(ERR_MALLOC), FAIL);
 	if (init_display(info->mlx) == FAIL)
 		return (FAIL);
+	init_player(info);
 	if (display(info) == FAIL)
 		return (FAIL);
 	return (SUCCESS);

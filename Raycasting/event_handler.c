@@ -35,9 +35,9 @@ int	closes(t_info *info)
 	mlx_destroy_window(info->mlx->init_ptr, info->mlx->window);
 	mlx_destroy_display(info->mlx->init_ptr);
 	free(info->mlx->init_ptr);
-	free_map(info->map);
+	//free_map(info->map);
 	free(info->mlx);
-	free_raycasting(info->raycasting);
+	//free_raycasting(info->raycasting);
 	free(info);
 	exit(0);
 	return (0);
@@ -51,9 +51,9 @@ int	key_handler(int keycode, t_info *info)
 		mlx_destroy_window(info->mlx->init_ptr, info->mlx->window);
 		mlx_destroy_display(info->mlx->init_ptr);
 		free(info->mlx->init_ptr);
-		free_map(info->map);
+		//free_map(info->map);
 		free(info->mlx);
-		free_raycasting(info->raycasting);
+		//free_raycasting(info->raycasting);
 		free(info);
 		exit(0);
 	}
@@ -65,3 +65,9 @@ void	event_handler(t_info *info)
 	mlx_hook(info->mlx->window, ON_KEYDOWN, 1L << 0, key_handler, info);
 	mlx_hook(info->mlx->window, ON_DESTROY, 1L << 17, closes, info);
 }
+
+// void	redraw_and_clear_window(t_info *info)
+// {
+// 	mlx_clear_window(info->mlx->init_ptr, info->mlx->window);
+// 	mlx_put_image_to_window(info->mlx->init_ptr, info->mlx->window, info->mlx->img.img_ptr, 0, 0);
+// }

@@ -15,6 +15,15 @@
 void	image_handler(t_window *mlx)
 {
 	mlx->img.img_ptr = mlx_new_image(mlx->init_ptr, mlx->width, mlx->height);
+	if (!mlx->img.img_ptr)
+    {
+        printf("Erreur : mlx_new_image a échoué\n");
+        return;
+    }
 	mlx->img.img_data_address = mlx_get_data_addr(mlx->img.img_ptr,
 			&mlx->img.bits_per_pixel, &mlx->img.size_line, &mlx->img.endian);
+	  if (!mlx->img.img_data_address)
+    {
+        printf("Erreur : mlx_get_data_addr a échoué\n");
+    }
 }
