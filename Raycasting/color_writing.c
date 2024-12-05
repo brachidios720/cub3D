@@ -12,6 +12,8 @@
 
 #include "../include/cub3d.h"
 
+// afficher les images dans une boucle while 
+
 void	set_pixel_color(t_img_info img, int pos_x, int pos_y, int color)
 {
 	int		offset;

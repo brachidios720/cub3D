@@ -31,9 +31,10 @@ int	init_display(t_window *mlx)
 int	display(t_info *info)
 {
 	image_handler(info->mlx);
-	mlx_put_image_to_window(info->mlx->init_ptr, info->mlx->window, \
-						info->mlx->img.img_ptr, 0, 0);
+	mlx_key_hook(info->mlx->window, check_handler_move, info);
+	mlx_loop_hook(info->mlx->init_ptr, game_loop, info);
 	event_handler(info);
 	mlx_loop(info->mlx->init_ptr);
 	return (SUCCESS);
 }
+
