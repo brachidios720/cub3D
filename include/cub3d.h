@@ -251,6 +251,8 @@ void						redraw_and_clear_window(t_info *info);
 void    					count_fps_move_speed(t_info *info);	
 int    						check_handler_move(int keycode, t_info *info);
 int 						game_loop(t_info *info);
+void						init_camera_start_SN(t_info *info);
+void						init_camera_start_EO(t_info *info);
 
 /* color_writing.c */
 void						set_pixel_color(t_img_info img, int x, int y, int color);
@@ -275,6 +277,7 @@ unsigned long 				get_ticks();
 int							flood_fill(char **map_copy, int row, \
 							int col, t_map map);
 void						printf_map(char **map);
+void						add_rest(t_info *info);
 
 /* free_utils.c */
 void						free_info(t_info *info);

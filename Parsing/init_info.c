@@ -17,11 +17,11 @@ static void	init_player_and_ray(t_info *info)
 	info->player.pos_x = -1;
 	info->player.pos_y = -1;
 	info->player.dir_x = -1;
-	info->player.dir_y = -1;
-	info->player.plane_x = -1;
-	info->player.plane_y = -1;
-	info->player.move_speed = -1;
-	info->player.rot_speed = -1;
+	info->player.dir_y = 0;
+	info->player.plane_x = 0;
+	info->player.plane_y = 0;
+    info->player.move_speed = 0.10;
+    info->player.rot_speed = 0.07;
 	info->player.facing = 0;
 	info->ray.raydir_x = -1;
 	info->ray.raydir_y = -1;
@@ -45,8 +45,8 @@ static void	init_texture(t_info *info)
 	while (i < 4)
 	{
 		info->texture[i].data = NULL;
-		info->texture[i].width = 0;
-		info->texture[i].height = 0;
+		info->texture[i].width = 64;
+		info->texture[i].height = 64;
 		info->texture[i].wall_x = 0;
 		info->texture[i].tex_x = 0;
 		info->texture[i].tex_y = 0;

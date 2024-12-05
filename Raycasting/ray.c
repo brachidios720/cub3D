@@ -57,7 +57,11 @@ void    check_while_wall_hit(t_info *info)
           info->ray.map_y += info->ray.step_y;
           info->ray.side = 1;
         }
-        if (info->map.grid[info->ray.map_x][info->ray.map_y] > '0') 
+        // printf("ray map x = %d\n", info->ray.map_x);
+	    // printf("ray map y = %d\n", info->ray.map_y);
+        // printf_map(info->map.grid);
+        // printf("%c\n", info->map.grid[info->ray.map_y][info->ray.map_x]);
+        if (info->map.grid[info->ray.map_y][info->ray.map_x] > '0') 
             hit = 1;
     }
 }
@@ -86,7 +90,7 @@ void    draw_wall_slice(t_info *info, int x, t_window *window)
     int color;
 
     // Déterminer la couleur du mur en fonction de la valeur de la carte
-    switch (info->map.grid[info->ray.map_x][info->ray.map_y])
+    switch (info->map.grid[info->ray.map_y][info->ray.map_x])
     {
         case '1':  color = 0xFF0000; break; // Rouge
         case '2':  color = 0x00FF00; break; // Vert
@@ -109,7 +113,6 @@ void    verLine(t_img_info img, int x, t_info *info, int color)
 
     for (y = info->render.drawstart; y <= info->render.drawend; y++)
     {
-        //printf("iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii\n");
         set_pixel_color(img, x, y, color);
     }
 }

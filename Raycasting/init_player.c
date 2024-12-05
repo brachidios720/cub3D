@@ -33,25 +33,22 @@ void    calculate_ray_directions(t_info *info)
         draw_wall_slice(info, x, info->mlx);
         x++;
     }
-    //redraw_and_clear_window(info);
-    //mlx_put_image_to_window(info->mlx->init_ptr, info->mlx->window, info->mlx->img.img_ptr, 0, 0);
-    //count_fps_move_speed(info);
 }
 
-void    init_player(t_info *info)
-{
-    info->player.pos_x = 3;
-    info->player.pos_y = 6;
-    info->player.dir_x = -1;
-    info->player.dir_y = 0;
-    info->player.plane_x = 0;
-    info->player.plane_y = 0.66;
+// void    init_player(t_info *info)
+// {
+//     info->player.pos_x = 3;
+//     info->player.pos_y = 6;
+//     info->player.dir_x = -1;
+//     info->player.dir_y = 0;
+//     info->player.plane_x = 0;
+//     info->player.plane_y = 0.66;
     
-    //double degrees = 10.0;
-    info->player.move_speed = 0.10;
-    info->player.rot_speed = 0.07;
-    //info->player.rot_speed = degrees * (PI / 180.0);
-}
+//     //double degrees = 10.0;
+//     info->player.move_speed = 0.10;
+//     info->player.rot_speed = 0.07;
+//     //info->player.rot_speed = degrees * (PI / 180.0);
+// }
 
 // void    calculate_ray_step_and_distances(t_info *info)
 // {
@@ -72,6 +69,39 @@ void    calculate_delta_distances_y(t_info *info)
         info->ray.deltadist_y = INFINITY;
     else
         info->ray.deltadist_y = fabs(1.0 / info->ray.raydir_y);
+}
+
+void    init_camera_start_EO(t_info *info)
+{
+    
+    if(info->player.facing == 'O')
+    {
+        info->player.dir_x = 1;
+        info->player.plane_y = -0.66;
+    }
+    else if(info->player.facing == 'E')
+    {
+        info->player.dir_x = -1;
+        info->player.plane_y = 0.66;
+    }
+    info->player.dir_y = 0;
+    info->player.plane_x = 0;
+}
+
+void    init_camera_start_SN(t_info *info)
+{
+    if(info->player.facing == 'S')
+    {
+        info->player.dir_y = 1;
+        info->player.plane_x = 0.66;
+    }
+    else if(info->player.facing == 'N')
+    {
+        info->player.dir_y = -1;
+        info->player.plane_x = -0.66;
+    }
+    info->player.dir_x = 0;
+    info->player.plane_y = 0;
 }
 
 // void    search_the_camera_start_position(t_info *info)

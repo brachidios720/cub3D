@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 	init_info(&info);
 	if (fill_info(&info, &parsing) == FAIL)
 		return (free_info(&info), FAIL);
+	add_rest(&info);
 	raycasting_entry(&info);
 	return (SUCCESS);
 }
