@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting_entry.c                                 :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-26 12:49:23 by raphael           #+#    #+#             */
-/*   Updated: 2024/12/02 17:06:23 by almarico         ###   ########.fr       */
+/*   Created: 2024/11/30 13:24:23 by almarico          #+#    #+#             */
+/*   Updated: 2024/11/30 13:24:52 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "libft.h"
 
-int	raycasting_entry(t_info *info)
+char	*ft_strstr(char *str, char *to_find)
 {
-	if (display(info) == FAIL)
-		return (FAIL);
-	return (SUCCESS);
+	int	i;
+	int	j;
+
+	i = 0;
+	if (!to_find[0])
+		return (str);
+	while (str[i])
+	{
+		j = 0;
+		if (str[i] == to_find[j])
+		{
+			while (str[i + j] == to_find[j] && to_find[j])
+				j++;
+			if (to_find[j] == '\0')
+				return (&str[i]);
+		}
+		i++;
+	}
+	return (0);
 }

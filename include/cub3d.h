@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/28 15:14:15 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:00:37 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@
 /* general & error defines */
 # define SUCCESS					0
 # define FAIL						1
-# define CONTINUE					0
-# define STOP						1
+# define TRUE						1
+# define FALSE						0
+# define CONTINUE					1
+# define STOP						0
 # define STDIN						0
 # define STDOUT						1
 # define STDERR						2
@@ -73,12 +75,53 @@
 
 /* error define */
 # define ERR_MALLOC					"An error occured during the malloc\n"
+# define ERR_ARG					"The number or arguments is different \
+from two\n"
+# define ERR_CUB_FORMAT				"Error: the map is not a .cub format\n"
+# define ERR_DIR					"Error occur while opening: argument is \
+a directory\n"
+# define ERR_OPEN					"Error occur while opening: the opening \
+fail\n"
+# define ERR_EMPTY					"Error occur while reading: the map is \
+empty\n"
+# define ERR_COPY					"Error occur while copying the map\n"
+# define ERR_TEXTURE_EXIST			"Error occur while init the texture: \
+texture already init\n"
+# define ERR_XPM					"Error occur while opening: xpm to image \
+failed\n"
+# define ERR_NO_XPM					"Error occur while reading: there is \
+no xpm\n"
+# define ERR_XPM_FORMAT				"Error: the texture is not a .xpm \
+format\n"
+# define ERR_CHAR_MAP				"Error: there is other character in the \
+map than \" 01NSEW\"\n"
+# define ERR_MULTIPLE_PLAYER		"Error: there are multiple player in \
+the map\n"
+# define ERR_NO_PLAYER				"Error: no player in the map\n"
+# define ERR_NO_SPACE				"Error: there are no space for the player \
+to play\n"
+# define ERR_MAP					"Error: the map is not surrounded by wall\n"
+# define ERR_COLOR					"Error: r, g or b are not in the range \
+0-255\n"
 
 /* other define */
 # define HEIGHT	720
 # define WIDTH	1280
 
-# define PI 3.14159265359
+/* parsing define */
+# define MAP_CHARSET				"01NSEW"
+# define NORTH						"NO"
+# define EAST						"EA"
+# define SOUTH						"SO"
+# define WEST						"WE"
+# define FLOOR						"F"
+# define CEILING					"C"
+
+/* define textures */
+# define T_NORTH					0
+# define T_EAST						1
+# define T_SOUTH					2
+# define T_WEST						3
 
 /* mlx structure */
 typedef struct s_img_info
@@ -113,6 +156,7 @@ typedef struct s_player
 	double	plane_y;		// Camera plane vector _y
 	double	move_speed;	// Movement speed
 	double	rot_speed;	// Rotation speed
+	char	facing;
 }				t_player;
 
 typedef struct s_ray
@@ -146,9 +190,11 @@ typedef struct s_texture
 
 typedef struct s_map
 {
-	char**grid;			// 2D array representing the map
-	int	width;			// Map width
-	int	height;			// Map height
+	char	**grid;			// 2D array representing the map
+	int		width;			// Map width
+	int		height;			// Map height
+	int		ceiling_color;
+	int		floor_color;
 }				t_map;
 
 typedef struct s_render
@@ -160,6 +206,8 @@ typedef struct s_render
 	int	drawend;		// End point for drawing the wall slice
 }				t_render;
 
+/* global structure */
+
 typedef struct s_info
 {
 	t_window	*mlx;
@@ -167,13 +215,21 @@ typedef struct s_info
 	t_ray		ray;		// Raycasting variables
 	t_map		map;		// Map data
 	t_render	render;		// Rendering parameters
-	t_texture	texture;	// Texture data
 	double			time;
 	double			old_time;
 	double		frametime;
+	t_texture	texture[4];	// Texture data
 	int			**buffer;	// Framebuffer for rendering
+	int			buffer_size;
 	int			isrunning;	// Game loop flag
 }				t_info;
+
+typedef struct s_parse
+{
+	int			fd_map;
+	int			fd_texture;
+	char		*tab[128];
+}				t_parse;
 
 /* raycasting_entry.c */
 void    					init_player(t_info *info);
@@ -215,6 +271,45 @@ int							display(t_info *info);
 
 /* utils.c */
 void						write_message(const char *msg);
-unsigned long 				get_ticks(); 
+unsigned long 				get_ticks();
+int							flood_fill(char **map_copy, int row, \
+							int col, t_map map);
+void						printf_map(char **map);
+
+/* free_utils.c */
+void						free_info(t_info *info);
+void						free_double_int(int **tab, int size);
+void						free_double_tab(char **tab);
+void						free_list(t_list **lst);
+
+/* check_format.c */
+int							check_cub_format(char *str);
+int							check_xpm_format(char *str);
+
+/* check_opening.c */
+int							check_opening(char *str, int *fd);
+
+/* get_map_info.c */
+int							get_map_info(t_parse *parsing);
+
+/* fill_info.c */
+int							fill_info(t_info *info, t_parse *parsing);
+int							contain_only_isspace(char *line);
+
+/* fill_texture.c */
+int							fill_texture(t_info *info, char *line);
+
+/* fill_color.c */
+int							fill_color(t_info *info, char *line);
+
+/* fill_map.c */
+int							everything_is_set(t_info *info);
+int							fill_map(t_info *info, t_parse *parsing, int *i);
+
+/* fill_player.c */
+int							fill_player(t_info *info);
+
+/* init_info.c */
+int							init_info(t_info *info);
 
 #endif // !CUB3D_H

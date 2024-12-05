@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:28:28 by almarico          #+#    #+#             */
-/*   Updated: 2024/11/28 13:52:23 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:46:59 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int	init_display(t_window *mlx)
 int	display(t_info *info)
 {
 	image_handler(info->mlx);
-	//mlx_put_image_to_window(info->mlx->init_ptr, info->mlx->window, info->mlx->img.img_ptr, 0, 0);
-	//ft_raycasting(info);
 	mlx_key_hook(info->mlx->window, check_handler_move, info);
 	mlx_loop_hook(info->mlx->init_ptr, game_loop, info);
 	event_handler(info);

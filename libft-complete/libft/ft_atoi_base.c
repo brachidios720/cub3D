@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:32:55 by almarico          #+#    #+#             */
-/*   Updated: 2024/08/20 11:56:59 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:07:06 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static int	ft_check_base(char *base)
 	return (0);
 }
 
-static int	ft_is_in_base(char c, char *base)
+int	ft_is_in_base(char c, char *base)
 {
 	int	j;
 
 	j = 0;
-	while (c != base[j])
+	while (base[j] && c != base[j])
 		j++;
 	if (c == base[j])
 		return (0);
