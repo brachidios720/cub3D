@@ -50,6 +50,6 @@ void	add_rest(t_info *info)
     info->ray.map_y = (int)info->player.pos_y;
 	if(info->player.facing == 'N' || info->player.facing == 'S')
 		init_camera_start_SN(info);
-	if(info->player.facing == 'E' || info->player.facing == 'O')
+	if(info->player.facing == 'E' || info->player.facing == 'W')
 		init_camera_start_EO(info);
 }

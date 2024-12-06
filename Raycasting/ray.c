@@ -77,7 +77,7 @@ void    check_projection_on_cameradist(t_info *info)
 void    render_tall_for_texture(t_info *info)
 {
     info->render.lineheight = (int)(HEIGHT / info->ray.perpwalldist);
-    info->render.drawstart = (-info->render.lineheight / 2 )+ (HEIGHT / 2);
+    info->render.drawstart = (-info->render.lineheight / 2 ) + (HEIGHT / 2);
     if(info->render.drawstart < 0)
         info->render.drawstart = 0;
     info->render.drawend = (info->render.lineheight / 2) + (HEIGHT / 2);
@@ -141,11 +141,9 @@ int is_wall(t_info *info, double x, double y)
     int map_x = (int)x;
     int map_y = (int)y;
 
-    // Assurez-vous que les coordonnées sont dans la carte
     // if (map_x < 0 || map_y < 0 || map_x >= info->map_width || map_y >= info->map_height)
     //     return 1;
 
-    // Retourne 1 si c'est un mur, 0 sinon
     return (info->map.grid[map_y][map_x] == '1');
 }
 
@@ -153,7 +151,6 @@ int    check_handler_move(int keycode, t_info *info)
 {
     if (keycode == W_KEYL) 
     { // Avancer (W)
-        //printf("IIIIIIIIIIIIIIIIIICCCCCCCCCCCCCCCCCCIIIIIIIIIIIII\n");
         if (!is_wall(info, info->player.pos_x + info->player.dir_x * info->player.move_speed, info->player.pos_y))
             info->player.pos_x += info->player.dir_x * info->player.move_speed;
         if (!is_wall(info, info->player.pos_x, info->player.pos_y + info->player.dir_y * info->player.move_speed))

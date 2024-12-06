@@ -74,7 +74,7 @@ void    calculate_delta_distances_y(t_info *info)
 void    init_camera_start_EO(t_info *info)
 {
     
-    if(info->player.facing == 'O')
+    if(info->player.facing == 'W')
     {
         info->player.dir_x = 1;
         info->player.plane_y = -0.66;
@@ -103,8 +103,3 @@ void    init_camera_start_SN(t_info *info)
     info->player.dir_x = 0;
     info->player.plane_y = 0;
 }
-
-// void    search_the_camera_start_position(t_info *info)
-// {
-    
-// }
