@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:31:26 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/02 18:03:27 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:23:31 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ static void	init_texture(t_info *info)
 	i = 0;
 	while (i < 4)
 	{
-		info->texture[i].img = NULL;
-		info->texture[i].width = 64;
-		info->texture[i].height = 64;
+		info->texture[i].img.img_ptr = NULL;
+		info->texture[i].width = 0;
+		info->texture[i].height = 0;
 		info->texture[i].wall_x = 0;
 		info->texture[i].tex_x = 0;
 		info->texture[i].tex_y = 0;

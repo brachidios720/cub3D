@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:43:21 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 18:39:35 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:21:01 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	everything_is_set(t_info *info)
 {
-	if (!info->texture[T_NORTH].img || !info->texture[T_EAST].img
-		|| !info->texture[T_SOUTH].img || !info->texture[T_WEST].img)
+	if (!info->texture[T_NORTH].img.img_ptr || !info->texture[T_EAST].img.img_ptr
+		|| !info->texture[T_SOUTH].img.img_ptr || !info->texture[T_WEST].img.img_ptr)
 		return (FAIL);
 	if (info->map.floor_color == -1 || info->map.ceiling_color == -1)
 		return (FAIL);

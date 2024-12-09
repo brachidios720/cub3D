@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            #+#  +:+       +#+        */
+/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024-12-06 17:16:52 by raphael           #+#    #+#             */
-/*   Updated: 2024-12-06 17:16:52 by raphael          ###   ########.fr       */
+/*   Updated: 2024/12/09 13:35:36 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ t_texture   *get_texture(t_info *info)
 // }   
 int	get_pix_color(t_texture texture, int x, int y)
 {
-	return (*(int *)(texture.img->img_data_address + (4 * texture.img->size_line * y) + (4 * x)));
+	return (*(int *)(texture.img.img_data_address + (4 * texture.width * y) + (4 * x)));
 }
 
 void    draw_wall_slice3(t_info *info, int x, t_img_info *img)
@@ -95,11 +95,8 @@ void    draw_wall_slice3(t_info *info, int x, t_img_info *img)
     {
         info->texture->tex_y = (int)info->texture->texpos & (info->texture[info->ray.texture_id].height - 1);
         info->texture->texpos += info->texture->step;
-
-        pixel_color = info->texture[info->ray.texture_id].img->img_data_address[info->texture->tex_y * info->texture[info->ray.texture_id].width + info->texture->tex_x];
-
         if(x >= 0 && x < info->mlx->width && y >= 0 && y < info->mlx->height)
-            get_pix_color(info->texture[info->ray.texture_id], x, y);
+            pixel_color = get_pix_color(info->texture[info->ray.texture_id], info->texture[info->ray.texture_id].tex_x, info->texture[info->ray.texture_id].tex_y);
         set_pixel_color(info->mlx->img, x, y, pixel_color);
         y++;
     }

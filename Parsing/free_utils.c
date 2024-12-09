@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 17:01:52 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 09:52:40 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:20:19 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ void	free_info(t_info *info)
 	free_double_int(info->buffer, info->buffer_size);
 	if (info->mlx)
 	{
-		if (info->texture[T_NORTH].img)
-			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_NORTH].img);
-		if (info->texture[T_EAST].img)
-			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_EAST].img);
-		if (info->texture[T_SOUTH].img)
-			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_SOUTH].img);
-		if (info->texture[T_WEST].img)
-			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_WEST].img);
+		if (info->texture[T_NORTH].img.img_ptr)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_NORTH].img.img_ptr);
+		if (info->texture[T_EAST].img.img_ptr)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_EAST].img.img_ptr);
+		if (info->texture[T_SOUTH].img.img_ptr)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_SOUTH].img.img_ptr);
+		if (info->texture[T_WEST].img.img_ptr)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_WEST].img.img_ptr);
 		mlx_destroy_window(info->mlx->init_ptr, info->mlx->window);
 		mlx_destroy_display(info->mlx->init_ptr);
 		free(info->mlx->init_ptr);

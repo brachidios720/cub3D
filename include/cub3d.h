@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/09 12:53:18 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:16:32 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,7 +180,7 @@ typedef struct s_ray
 
 typedef struct s_texture
 {
-	t_img_info	*img;
+	t_img_info	img;
 	int			width;		// Width of the texture
 	int			height;		// Height of the texture
 	double		wall_x;		// Exact X coordinate of the wall hit
