@@ -12,17 +12,28 @@
 
 #include "../include/cub3d.h"
 
-void clear_image(t_img_info *img, int width, int height, int color)
+void clear_image(t_info *info)
 {
     int x, y;
 
     y = 0;
-    while (y < height)
+    while (y < info->mlx->center_height)
     {
         x = 0;
-        while (x < width)
+        while (x < info->mlx->width)
         {
-            set_pixel_color(*img, x, y, color);
+            set_pixel_color(info->mlx->img, x, y, info->map.ceiling_color);
+            x++;
+        }
+        y++;
+    }
+
+    while (y < info->mlx->height)
+    {
+        x = 0;
+        while (x < info->mlx->width)
+        {
+            set_pixel_color(info->mlx->img, x, y, info->map.floor_color);
             x++;
         }
         y++;
@@ -40,7 +51,7 @@ void redraw_and_clear_window(t_info *info)
     // }
 
 
-    clear_image(&info->mlx->img, WIDTH, HEIGHT, 0x000000);
+    clear_image(info);
     // Dessine les nouveaux éléments
     calculate_ray_directions(info);
 

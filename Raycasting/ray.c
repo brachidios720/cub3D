@@ -153,9 +153,6 @@ int is_wall(t_info *info, double x, double y)
     int map_x = (int)x;
     int map_y = (int)y;
 
-    // if (map_x < 0 || map_y < 0 || map_x >= info->map_width || map_y >= info->map_height)
-    //     return 1;
-
     return (info->map.grid[map_y][map_x] == '1');
 }
 
@@ -163,45 +160,22 @@ int    check_handler_move(int keycode, t_info *info)
 {
     if (keycode == W_KEYL) 
     { // Avancer (W)
-        if (!is_wall(info, info->player.pos_x + info->player.dir_x * info->player.move_speed, info->player.pos_y))
+        if (!is_wall(info, info->player.pos_x + info->player.dir_x * \
+        info->player.move_speed, info->player.pos_y))
             info->player.pos_x += info->player.dir_x * info->player.move_speed;
-        if (!is_wall(info, info->player.pos_x, info->player.pos_y + info->player.dir_y * info->player.move_speed))
+        if (!is_wall(info, info->player.pos_x, info->player.pos_y + \
+        info->player.dir_y * info->player.move_speed))
             info->player.pos_y += info->player.dir_y * info->player.move_speed;    
     }
     if (keycode == S_KEYL)
-    { // reculer (S)
-        if (!is_wall(info, info->player.pos_x - info->player.dir_x * info->player.move_speed, info->player.pos_y))
-            info->player.pos_x -= info->player.dir_x * info->player.move_speed;
-        if (!is_wall(info, info->player.pos_x, info->player.pos_y - info->player.dir_y * info->player.move_speed))
-            info->player.pos_y -= info->player.dir_y * info->player.move_speed;
-    }
-    if  (keycode == D_KEYL)
-    {
-        double olddirx = info->player.dir_x;
-        info->player.dir_x = info->player.dir_x * cos(-info->player.rot_speed) - info->player.dir_y * sin(-info->player.rot_speed);
-        info->player.dir_y = olddirx * sin(-info->player.rot_speed) + info->player.dir_y * cos(-info->player.rot_speed);
-        double  oldplanex = info->player.plane_x;
-        info->player.plane_x = info->player.plane_x * cos(-info->player.rot_speed) - info->player.plane_y * sin(-info->player.rot_speed);
-        info->player.plane_y = oldplanex * sin(-info->player.rot_speed) + info->player.plane_y * cos(-info->player.rot_speed);
-    }
-    if  (keycode == A_KEYL)
-    {
-        double olddirx = info->player.dir_x;
-        info->player.dir_x = info->player.dir_x * cos(info->player.rot_speed) - info->player.dir_y * sin(info->player.rot_speed);
-        info->player.dir_y = olddirx * sin(info->player.rot_speed) + info->player.dir_y * cos(info->player.rot_speed);
-        double  oldplanex = info->player.plane_x;
-        info->player.plane_x = info->player.plane_x * cos(info->player.rot_speed) - info->player.plane_y * sin(info->player.rot_speed);
-        info->player.plane_y = oldplanex * sin(info->player.rot_speed) + info->player.plane_y * cos(info->player.rot_speed);
-    }
-	// else if (keycode == KEY_S)
-	// {
-	// 	check(map, map->pos_x + 1, map->pos_y);
-	// 	parcours_map(map);
-	// }
-	// else if (keycode == KEY_D)
-	// {
-	// 	check(map, map->pos_x, map->pos_y + 1);
-	// 	parcours_map(map);
-	// }
+        keycode_S(info);
+    if (keycode == A_KEYL)
+        keycode_A(info);
+    if (keycode == D_KEYL)
+        keycode_D(info);
+    if  (keycode == RIGHT_ARROW_KEYL)
+        keycode_right_arrow(info);
+    if  (keycode == LEFT_ARROW_KEYL)
+        keycode_left_arrow(info);
     return(0);
 }

@@ -257,7 +257,15 @@ void						init_camera_start_SN(t_info *info);
 void						init_camera_start_EO(t_info *info);
 void       					draw_wall_slice2(t_info *info, int x, t_window *window);
 void    					draw_wall_slice3(t_info *info, int x, t_img_info *img);
+int 						is_wall(t_info *info, double x, double y);
 
+// player move 
+
+void    keycode_S(t_info *info);
+void    keycode_A(t_info *info);
+void    keycode_D(t_info *info);
+void    keycode_right_arrow(t_info *info);
+void    keycode_left_arrow(t_info *info);
 /* color_writing.c */
 void						set_pixel_color(t_img_info img, int x, int y, int color);
 
