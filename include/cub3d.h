@@ -6,13 +6,14 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 19:00:37 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:53:18 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+#include <stdint.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>
@@ -179,13 +180,14 @@ typedef struct s_ray
 
 typedef struct s_texture
 {
-	int		width;		// Width of the texture
-	int		height;		// Height of the texture
-	double	wall_x;		// Exact X coordinate of the wall hit
-	int		tex_x;		// X coordinate in the texture
-	int		tex_y;		// Y coordinate in the texture
-	double	step;		// Step size for sampling the texture
-	double	texpos;		// Current position in the texture
+	t_img_info	*img;
+	int			width;		// Width of the texture
+	int			height;		// Height of the texture
+	double		wall_x;		// Exact X coordinate of the wall hit
+	int			tex_x;		// X coordinate in the texture
+	int			tex_y;		// Y coordinate in the texture
+	double		step;		// Step size for sampling the texture
+	double		texpos;		// Current position in the texture
 }				t_texture;
 
 typedef struct s_map

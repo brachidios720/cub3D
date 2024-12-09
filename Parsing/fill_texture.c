@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:43:41 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 18:45:56 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/09 12:54:24 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	get_texture(t_info *info, t_texture *texture, char *line)
 	char	*tmp;
 	int		i;
 
-	if (texture->data)
+	if (texture->img->img_ptr)
 		return (write_message(ERR_TEXTURE_EXIST), FAIL);
 	tmp = ft_strstr(line, "./");
 	if (tmp[0] == '\0')
@@ -31,10 +31,12 @@ static int	get_texture(t_info *info, t_texture *texture, char *line)
 		return (free(tmp), write_message(ERR_MALLOC), FAIL);
 	if (check_xpm_format(filename) == FAIL)
 		return (free(filename), write_message(ERR_XPM_FORMAT), FAIL);
-	texture->data = mlx_xpm_file_to_image(info->mlx->init_ptr, filename, \
+	texture->img->img_ptr = mlx_xpm_file_to_image(info->mlx->init_ptr, filename, \
 									&texture->width, &texture->height);
-	if (!texture->data)
+	if (!texture->img->img_ptr)
 		return (free(filename), write_message(ERR_XPM), FAIL);
+	texture->img->img_data_address = mlx_get_data_addr(texture->img->img_ptr, \
+	&texture->img->bits_per_pixel, &texture->img->size_line, &texture->img->endian);
 	free(filename);
 	return (SUCCESS);
 }
