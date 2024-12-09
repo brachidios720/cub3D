@@ -36,6 +36,7 @@ RAYCASTING_SOURCES = ./Raycasting/raycasting_entry.c\
 					 ./Raycasting/init_player.c\
 					 ./Raycasting/raycasting.c\
 					 ./Raycasting/ray.c\
+					 ./Raycasting/wall_texture.c
 
 PARSING_OBJ_PATH = obj/Parsing/
 RAYCASTING_OBJ_PATH = obj/Raycasting/

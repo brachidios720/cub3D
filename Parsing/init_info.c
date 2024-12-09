@@ -35,6 +35,7 @@ static void	init_player_and_ray(t_info *info)
 	info->ray.map_x = 0;
 	info->ray.map_y = 0;
 	info->ray.side = 0;
+	info->ray.texture_id = 0;
 }
 
 static void	init_texture(t_info *info)

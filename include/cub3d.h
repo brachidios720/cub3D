@@ -174,11 +174,11 @@ typedef struct s_ray
 	int		map_x;				// Current grid cell X
 	int		map_y;				// Current grid cell Y
 	int		side;				// 0 for vertical wall, 1 for horizontal wall
+	int		texture_id;
 }				t_ray;
 
 typedef struct s_texture
 {
-	int		*data;		// Pointer to the texture data
 	int		width;		// Width of the texture
 	int		height;		// Height of the texture
 	double	wall_x;		// Exact X coordinate of the wall hit
@@ -253,6 +253,8 @@ int    						check_handler_move(int keycode, t_info *info);
 int 						game_loop(t_info *info);
 void						init_camera_start_SN(t_info *info);
 void						init_camera_start_EO(t_info *info);
+void       					draw_wall_slice2(t_info *info, int x, t_window *window);
+void    					draw_wall_slice3(t_info *info, int x, t_img_info *img);
 
 /* color_writing.c */
 void						set_pixel_color(t_img_info img, int x, int y, int color);

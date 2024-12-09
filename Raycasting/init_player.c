@@ -30,29 +30,10 @@ void    calculate_ray_directions(t_info *info)
         check_while_wall_hit(info);
         check_projection_on_cameradist(info);
         render_tall_for_texture(info);
-        draw_wall_slice(info, x, info->mlx);
+        draw_wall_slice3(info, x, info->mlx->window);
         x++;
     }
 }
-
-// void    init_player(t_info *info)
-// {
-//     info->player.pos_x = 3;
-//     info->player.pos_y = 6;
-//     info->player.dir_x = -1;
-//     info->player.dir_y = 0;
-//     info->player.plane_x = 0;
-//     info->player.plane_y = 0.66;
-    
-//     //double degrees = 10.0;
-//     info->player.move_speed = 0.10;
-//     info->player.rot_speed = 0.07;
-//     //info->player.rot_speed = degrees * (PI / 180.0);
-// }
-
-// void    calculate_ray_step_and_distances(t_info *info)
-// {
-// }
 
 void    calculate_delta_distances_x(t_info *info)
 {

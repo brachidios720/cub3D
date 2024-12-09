@@ -55,3 +55,8 @@ int	fill_texture(t_info *info, char *line)
 		return (FAIL);
 	return (SUCCESS);
 }
+
+void	init_texture(t_info *info)
+{
+	
+}

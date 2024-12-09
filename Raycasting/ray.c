@@ -57,12 +57,24 @@ void    check_while_wall_hit(t_info *info)
           info->ray.map_y += info->ray.step_y;
           info->ray.side = 1;
         }
-        // printf("ray map x = %d\n", info->ray.map_x);
-	    // printf("ray map y = %d\n", info->ray.map_y);
-        // printf_map(info->map.grid);
-        // printf("%c\n", info->map.grid[info->ray.map_y][info->ray.map_x]);
-        if (info->map.grid[info->ray.map_y][info->ray.map_x] > '0') 
+        if (info->map.grid[info->ray.map_y][info->ray.map_x] > '0')
+        {
             hit = 1;
+            if(info->ray.side == 0)
+            {
+                if(info->ray.raydir_x > 0)
+                    info->ray.texture_id = T_SOUTH;
+                else 
+                    info->ray.texture_id = T_NORTH;
+            }
+            else
+            {
+                if(info->ray.raydir_y > 0)
+                    info->ray.texture_id = T_EAST;
+                else
+                    info->ray.texture_id = T_WEST;
+            }
+        }
     }
 }
 
@@ -85,27 +97,27 @@ void    render_tall_for_texture(t_info *info)
         info->render.drawend = HEIGHT - 1;
 }
 
-void    draw_wall_slice(t_info *info, int x, t_window *window)
-{
-    int color;
+// void    draw_wall_slice(t_info *info, int x, t_window *window)
+// {
+//     int color;
 
-    // Déterminer la couleur du mur en fonction de la valeur de la carte
-    switch (info->map.grid[info->ray.map_y][info->ray.map_x])
-    {
-        case '1':  color = 0xFF0000; break; // Rouge
-        case '2':  color = 0x00FF00; break; // Vert
-        case '3':  color = 0x0000FF; break; // Bleu
-        case '4':  color = 0xFFFFFF; break; // Blanc
-        default:   color = 0xFFFF00; break; // Jaune
-    }
+//     // Déterminer la couleur du mur en fonction de la valeur de la carte
+//     switch (info->map.grid[info->ray.map_y][info->ray.map_x])
+//     {
+//         case '1':  color = 0xFF0000; break; // Rouge
+//         case '2':  color = 0x00FF00; break; // Vert
+//         case '3':  color = 0x0000FF; break; // Bleu
+//         case '4':  color = 0xFFFFFF; break; // Blanc
+//         default:   color = 0xFFFF00; break; // Jaune
+//     }
 
-    // Réduire la luminosité si on est sur un côté (horizontal ou vertical)
-    if (info->ray.side == 1)
-        color = (color & 0xFEFEFE) >> 1; // Divise les composantes RGB par 2
+//     // Réduire la luminosité si on est sur un côté (horizontal ou vertical)
+//     if (info->ray.side == 1)
+//         color = (color & 0xFEFEFE) >> 1; // Divise les composantes RGB par 2
 
-    // Dessiner la ligne verticale
-    verLine(window->img, x, info, color);
-}
+//     // Dessiner la ligne verticale
+//     verLine(window->img, x, info, color);
+// }
 
 void    verLine(t_img_info img, int x, t_info *info, int color)
 {
