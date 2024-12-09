@@ -45,7 +45,7 @@ static void	init_texture(t_info *info)
 	i = 0;
 	while (i < 4)
 	{
-		info->texture[i].data = NULL;
+		info->texture[i].img = NULL;
 		info->texture[i].width = 64;
 		info->texture[i].height = 64;
 		info->texture[i].wall_x = 0;

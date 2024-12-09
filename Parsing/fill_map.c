@@ -14,8 +14,8 @@
 
 int	everything_is_set(t_info *info)
 {
-	if (!info->texture[T_NORTH].data || !info->texture[T_EAST].data
-		|| !info->texture[T_SOUTH].data || !info->texture[T_WEST].data)
+	if (!info->texture[T_NORTH].img || !info->texture[T_EAST].img
+		|| !info->texture[T_SOUTH].img || !info->texture[T_WEST].img)
 		return (FAIL);
 	if (info->map.floor_color == -1 || info->map.ceiling_color == -1)
 		return (FAIL);

@@ -18,7 +18,7 @@ static int	get_texture(t_info *info, t_texture *texture, char *line)
 	char	*tmp;
 	int		i;
 
-	if (texture->img->img_ptr)
+	if (texture->img)
 		return (write_message(ERR_TEXTURE_EXIST), FAIL);
 	tmp = ft_strstr(line, "./");
 	if (tmp[0] == '\0')
@@ -58,7 +58,3 @@ int	fill_texture(t_info *info, char *line)
 	return (SUCCESS);
 }
 
-void	init_texture(t_info *info)
-{
-	
-}

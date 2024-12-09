@@ -43,14 +43,14 @@ void	free_info(t_info *info)
 	free_double_int(info->buffer, info->buffer_size);
 	if (info->mlx)
 	{
-		if (info->texture[T_NORTH].data)
-			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_NORTH].data);
-		if (info->texture[T_EAST].data)
-			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_EAST].data);
-		if (info->texture[T_SOUTH].data)
-			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_SOUTH].data);
-		if (info->texture[T_WEST].data)
-			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_WEST].data);
+		if (info->texture[T_NORTH].img)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_NORTH].img);
+		if (info->texture[T_EAST].img)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_EAST].img);
+		if (info->texture[T_SOUTH].img)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_SOUTH].img);
+		if (info->texture[T_WEST].img)
+			mlx_destroy_image(info->mlx->init_ptr, info->texture[T_WEST].img);
 		mlx_destroy_window(info->mlx->init_ptr, info->mlx->window);
 		mlx_destroy_display(info->mlx->init_ptr);
 		free(info->mlx->init_ptr);

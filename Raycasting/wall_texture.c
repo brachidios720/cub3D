@@ -66,6 +66,10 @@ t_texture   *get_texture(t_info *info)
 //         y++;
 //     }
 // }   
+int	get_pix_color(t_texture texture, int x, int y)
+{
+	return (*(int *)(texture.img->img_data_address + (4 * texture.img->size_line * y) + (4 * x)));
+}
 
 void    draw_wall_slice3(t_info *info, int x, t_img_info *img)
 {
@@ -92,7 +96,7 @@ void    draw_wall_slice3(t_info *info, int x, t_img_info *img)
         info->texture->tex_y = (int)info->texture->texpos & (info->texture[info->ray.texture_id].height - 1);
         info->texture->texpos += info->texture->step;
 
-        pixel_color = info->texture[info->ray.texture_id].data[info->texture->tex_y * info->texture[info->ray.texture_id].width + info->texture->tex_x];
+        pixel_color = info->texture[info->ray.texture_id].img->img_data_address[info->texture->tex_y * info->texture[info->ray.texture_id].width + info->texture->tex_x];
 
         if(x >= 0 && x < info->mlx->width && y >= 0 && y < info->mlx->height)
             get_pix_color(info->texture[info->ray.texture_id], x, y);
@@ -102,7 +106,3 @@ void    draw_wall_slice3(t_info *info, int x, t_img_info *img)
 
 }
 
-int	get_pix_color(t_texture texture, int x, int y)
-{
-	return (*(int *)(texture->img->img_data_address + (4 * texture->img->width * y) + (4 * x)));
-}
