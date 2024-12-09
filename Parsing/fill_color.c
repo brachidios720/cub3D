@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:42:51 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 18:43:48 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:30:51 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,13 @@ void	get_rgb(char *line, int *r, int *g, int *b)
 	while (line[i] && ft_isdigit(line[i]) == 0)
 		i++;
 	*r = ft_atoi(&line[i]);
+	while (line[i] && ft_isdigit(line[i]) != 0)
+		i++;
 	while (line[i] && ft_isdigit(line[i]) == 0)
 		i++;
 	*g = ft_atoi(&line[i]);
+	while (line[i] && ft_isdigit(line[i]) != 0)
+		i++;
 	while (line[i] && ft_isdigit(line[i]) == 0)
 		i++;
 	*b = ft_atoi(&line[i]);
