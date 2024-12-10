@@ -6,7 +6,11 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:16:52 by raphael           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/12/10 17:12:10 by almarico         ###   ########.fr       */
+=======
+/*   Updated: 2024/12/10 18:47:32 by rcarbonn         ###   ########.fr       */
+>>>>>>> a93aee9 (need normi)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +33,17 @@ int	get_pix_color(t_texture texture, int x, int y)
 			* x)));
 }
 
+void	check_side(t_info *info)
+{
+	info->texture[info->ray.texture_id].tex_x = (int)(info->texture[info->ray.texture_id].wall_x
+	* (double)info->texture[info->ray.texture_id].width);
+	if (info->ray.side == 0 && info->ray.raydir_y > 0)
+		info->texture[info->ray.texture_id].tex_x = info->texture[info->ray.texture_id].width
+			- info->texture[info->ray.texture_id].tex_x - 1;
+	if (info->ray.side == 1 && info->ray.raydir_y < 0)
+		info->texture[info->ray.texture_id].tex_x = info->texture[info->ray.texture_id].width
+			- info->texture[info->ray.texture_id].tex_x - 1;
+}
 void	draw_wall_slice3(t_info *info, int x, t_img_info *img)
 {
 	(void)img;
@@ -45,9 +60,11 @@ void	draw_wall_slice3(t_info *info, int x, t_img_info *img)
 	info->texture[info->ray.texture_id].texpos = (info->render.drawstart
 			- (float)HEIGHT / 2 + (float)info->render.lineheight / 2)
 		* info->texture[info->ray.texture_id].step;
+	check_side(info);
 	draw_wall(info, x);
 }
 
+<<<<<<< HEAD
 void	check_side(t_info *info)
 {
 	info->texture[info->ray.texture_id].tex_x = \
@@ -62,6 +79,8 @@ void	check_side(t_info *info)
 			info->texture[info->ray.texture_id].width \
 			- info->texture[info->ray.texture_id].tex_x - 1;
 }
+=======
+>>>>>>> a93aee9 (need normi)
 
 void	draw_wall(t_info *info, int x)
 {
