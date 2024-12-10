@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
+/*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:43:41 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/09 13:17:33 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:25:09 by rcarbonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ static int	get_texture(t_info *info, t_texture *texture, char *line)
 		return (free(tmp), write_message(ERR_MALLOC), FAIL);
 	if (check_xpm_format(filename) == FAIL)
 		return (free(filename), write_message(ERR_XPM_FORMAT), FAIL);
-	texture->img.img_ptr = mlx_xpm_file_to_image(info->mlx->init_ptr, filename, \
-									&texture->width, &texture->height);
+	texture->img.img_ptr = mlx_xpm_file_to_image(info->mlx->init_ptr, filename,
+			&texture->width, &texture->height);
 	if (!texture->img.img_ptr)
 		return (free(filename), write_message(ERR_XPM), FAIL);
-	texture->img.img_data_address = mlx_get_data_addr(texture->img.img_ptr, \
-	&texture->img.bits_per_pixel, &texture->img.size_line, &texture->img.endian);
+	texture->img.img_data_address = mlx_get_data_addr(texture->img.img_ptr,
+			&texture->img.bits_per_pixel, &texture->img.size_line,
+			&texture->img.endian);
 	free(filename);
 	return (SUCCESS);
 }
@@ -45,7 +46,7 @@ int	fill_texture(t_info *info, char *line)
 {
 	int	texture_index;
 
-  texture_index = 0;
+	texture_index = 0;
 	if (ft_strstr(line, NORTH))
 		texture_index = T_NORTH;
 	else if (ft_strstr(line, EAST))

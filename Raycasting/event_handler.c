@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   event_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raphael <raphael@student.42.fr>            #+#  +:+       +#+        */
+/*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-11-28 14:41:41 by raphael           #+#    #+#             */
-/*   Updated: 2024-11-28 14:41:41 by raphael          ###   ########.fr       */
+/*   Created: 2024/11/28 14:41:41 by raphael           #+#    #+#             */
+/*   Updated: 2024/12/09 15:59:07 by rcarbonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../include/cub3d.h"
 
@@ -53,9 +52,3 @@ void	event_handler(t_info *info)
 	mlx_hook(info->mlx->window, ON_KEYDOWN, 1L << 0, key_handler, info);
 	mlx_hook(info->mlx->window, ON_DESTROY, 1L << 17, closes, info);
 }
-
-// void	redraw_and_clear_window(t_info *info)
-// {
-// 	mlx_clear_window(info->mlx->init_ptr, info->mlx->window);
-// 	mlx_put_image_to_window(info->mlx->init_ptr, info->mlx->window, info->mlx->img.img_ptr, 0, 0);
-// }

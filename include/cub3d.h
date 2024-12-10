@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
+/*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/10 14:59:01 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:21:03 by rcarbonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,17 +253,17 @@ void						redraw_and_clear_window(t_info *info);
 void    					count_fps_move_speed(t_info *info);	
 int    						check_handler_move(int keycode, t_info *info);
 int 						game_loop(t_info *info);
-void						init_camera_start_SN(t_info *info);
-void						init_camera_start_EO(t_info *info);
+void						init_camera_start_sn(t_info *info);
+void						init_camera_start_eo(t_info *info);
 void       					draw_wall_slice2(t_info *info, int x, t_window *window);
 void    					draw_wall_slice3(t_info *info, int x, t_img_info *img);
 int 						is_wall(t_info *info, double x, double y);
 
 // player move 
 
-void    keycode_S(t_info *info);
-void    keycode_A(t_info *info);
-void    keycode_D(t_info *info);
+void    keycode_s(t_info *info);
+void    keycode_a(t_info *info);
+void    keycode_d(t_info *info);
 void    keycode_right_arrow(t_info *info);
 void    keycode_left_arrow(t_info *info);
 /* color_writing.c */

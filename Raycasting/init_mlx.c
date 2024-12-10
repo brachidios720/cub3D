@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
+/*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 12:28:28 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 18:46:59 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:58:22 by rcarbonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int	init_display(t_window *mlx)
 	mlx->init_ptr = mlx_init();
 	if (!mlx->init_ptr)
 		return (FAIL);
-	mlx->window = mlx_new_window(mlx->init_ptr, mlx->width, \
-						mlx->height, "cub3d");
+	mlx->window = mlx_new_window(mlx->init_ptr, mlx->width, mlx->height,
+			"cub3d");
 	if (!mlx->window)
 		return (FAIL);
 	return (SUCCESS);
@@ -37,4 +37,3 @@ int	display(t_info *info)
 	mlx_loop(info->mlx->init_ptr);
 	return (SUCCESS);
 }
-

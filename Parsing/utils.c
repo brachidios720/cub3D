@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
+/*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:40:02 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/06 15:34:37 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:22:52 by rcarbonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	add_rest(t_info *info)
 	info->ray.map_x = (int)info->player.pos_x;
 	info->ray.map_y = (int)info->player.pos_y;
 	if (info->player.facing == 'N' || info->player.facing == 'S')
-		init_camera_start_SN(info);
+		init_camera_start_sn(info);
 	if(info->player.facing == 'E' || info->player.facing == 'W')
-		init_camera_start_EO(info);
+		init_camera_start_eo(info);
 	info->map.grid[(int)info->player.pos_y][(int)info->player.pos_x] = '0';
 }
