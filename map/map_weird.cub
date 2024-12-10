@@ -1,11 +1,11 @@
-NO ./textures/eagle.xpm
+NO ./map/textures/eagle.xpm
 
 
 
-						SO ./textures/greystone.xpm
-WE ./textures/red.xpm
+						SO ./map/textures/greystone.xpm
+WE ./map/textures/red.xpm
 
-EA ./textures/purplestone.xpm
+EA ./map/textures/purplestone.xpm
 
 F 220,100,0
 				C 225,30,0

@@ -45,6 +45,7 @@ int	fill_texture(t_info *info, char *line)
 {
 	int	texture_index;
 
+  texture_index = 0;
 	if (ft_strstr(line, NORTH))
 		texture_index = T_NORTH;
 	else if (ft_strstr(line, EAST))

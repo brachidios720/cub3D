@@ -1,7 +1,7 @@
-NO ./textures/eagle.xpm
-SO ./textures/greystone.xpm
-WE ./textures/red.xpm
-EA ./textures/purplestone.xpm
+NO ./map/textures/eagle.xpm
+SO ./map/textures/greystone.xpm
+WE ./map/textures/red.xpm
+EA ./map/textures/purplestone.xpm
 
 F 220,100,0
 
