@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:42:51 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/09 15:30:51 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:05:47 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,22 @@ void	get_rgb(char *line, int *r, int *g, int *b)
 	int	i;
 
 	i = 0;
-	while (line[i] && ft_isdigit(line[i]) == 0)
+	while (line[i] && ft_isdigit(line[i]) == 0 && line[i] != '-')
 		i++;
-	*r = ft_atoi(&line[i]);
-	while (line[i] && ft_isdigit(line[i]) != 0)
-		i++;
-	while (line[i] && ft_isdigit(line[i]) == 0)
-		i++;
-	*g = ft_atoi(&line[i]);
-	while (line[i] && ft_isdigit(line[i]) != 0)
+	if (line[i])
+		*r = ft_atoi(&line[i]);
+	while (line[i] && ft_isdigit(line[i]) != 0 && line[i] != '-')
 		i++;
 	while (line[i] && ft_isdigit(line[i]) == 0)
 		i++;
-	*b = ft_atoi(&line[i]);
+	if (line[i])
+		*g = ft_atoi(&line[i]);
+	while (line[i] && ft_isdigit(line[i]) != 0 && line[i] != '-')
+		i++;
+	while (line[i] && ft_isdigit(line[i]) == 0)
+		i++;
+	if (line[i])
+		*b = ft_atoi(&line[i]);
 }
 
 int	fill_color(t_info *info, char *line)
@@ -43,6 +46,9 @@ int	fill_color(t_info *info, char *line)
 	int	g;
 	int	b;
 
+	r = -1;
+	g = -1;
+	b = -1;
 	if (ft_strstr(line, FLOOR))
 	{
 		get_rgb(line, &r, &g, &b);

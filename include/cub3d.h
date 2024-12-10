@@ -6,14 +6,14 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/09 13:16:32 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:59:01 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include <stdint.h>
+# include <stdint.h>
 # include <stdlib.h>
 # include <stdio.h>
 # include <math.h>

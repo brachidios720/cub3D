@@ -6,7 +6,7 @@
 /*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 22:46:19 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/04 19:00:07 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/10 14:58:36 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,6 @@ int	set_player_position(char **map, t_player *player)
 	return (SUCCESS);
 }
 
-int	check_player_position(t_map map, t_player player)
-{
-	int	is_there_a_zero;
-
-	is_there_a_zero = FALSE;
-	if (player.pos_x > 0 && player.pos_y > 0
-		&& player.pos_x < map.width - 1 && player.pos_y < map.height - 1)
-	{
-		if (map.grid[(int)player.pos_y][(int)player.pos_x - 1] == '0'
-			|| map.grid[(int)player.pos_y][(int)player.pos_x + 1] == '0'
-			|| map.grid[(int)player.pos_y - 1][(int)player.pos_x] == '0'
-			|| map.grid[(int)player.pos_y + 1][(int)player.pos_x] == '0')
-			is_there_a_zero = TRUE;
-	}
-	if (is_there_a_zero == TRUE)
-		return (SUCCESS);
-	return (write_message(ERR_NO_SPACE), FAIL);
-}
-
 int	check_map_delimitation(char **grid, t_map map)
 {
 	char	**map_copy;
@@ -114,8 +95,6 @@ int	fill_player(t_info *info)
 	if (check_lines(info->map.grid) == FAIL)
 		return (FAIL);
 	if (set_player_position(info->map.grid, &info->player) == FAIL)
-		return (FAIL);
-	if (check_player_position(info->map, info->player) == FAIL)
 		return (FAIL);
 	if (check_map_delimitation(info->map.grid, info->map) == FAIL)
 		return (FAIL);

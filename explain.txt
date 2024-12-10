@@ -1,1 +1,0 @@
-wall : 0 for a wall without colors, 1 or more for a wall with colors 
