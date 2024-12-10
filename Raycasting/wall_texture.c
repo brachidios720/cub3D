@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:16:52 by raphael           #+#    #+#             */
-/*   Updated: 2024/12/10 16:24:17 by rcarbonn         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:12:10 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	render_tall_for_texture(t_info *info)
 int	get_pix_color(t_texture texture, int x, int y)
 {
 	return (*(int *)(texture.img.img_data_address + (4 * texture.width * y) + (4
-				* x)));
+			* x)));
 }
 
 void	draw_wall_slice3(t_info *info, int x, t_img_info *img)
@@ -43,20 +43,23 @@ void	draw_wall_slice3(t_info *info, int x, t_img_info *img)
 	info->texture[info->ray.texture_id].step = 1.0
 		* info->texture[info->ray.texture_id].height / info->render.lineheight;
 	info->texture[info->ray.texture_id].texpos = (info->render.drawstart
-			- HEIGHT / 2 + info->render.lineheight / 2)
+			- (float)HEIGHT / 2 + (float)info->render.lineheight / 2)
 		* info->texture[info->ray.texture_id].step;
 	draw_wall(info, x);
 }
 
 void	check_side(t_info *info)
 {
-	info->texture[info->ray.texture_id].tex_x = (int)(info->texture[info->ray.texture_id].wall_x
-	* (double)info->texture[info->ray.texture_id].width);
+	info->texture[info->ray.texture_id].tex_x = \
+		(int)(info->texture[info->ray.texture_id].wall_x \
+		* (double)info->texture[info->ray.texture_id].width);
 	if (info->ray.side == 0 && info->ray.raydir_y > 0)
-		info->texture[info->ray.texture_id].tex_x = info->texture[info->ray.texture_id].width
+		info->texture[info->ray.texture_id].tex_x = \
+			info->texture[info->ray.texture_id].width \
 			- info->texture[info->ray.texture_id].tex_x - 1;
 	if (info->ray.side == 1 && info->ray.raydir_y < 0)
-		info->texture[info->ray.texture_id].tex_x = info->texture[info->ray.texture_id].width
+		info->texture[info->ray.texture_id].tex_x = \
+			info->texture[info->ray.texture_id].width \
 			- info->texture[info->ray.texture_id].tex_x - 1;
 }
 
@@ -65,14 +68,14 @@ void	draw_wall(t_info *info, int x)
 	int	pixel_color;
 	int	y;
 
-
 	y = info->render.drawstart;
 	while (y < info->render.drawend)
 	{
-		info->texture[info->ray.texture_id].tex_y = (int)info->texture[info->ray.texture_id].texpos & (info->texture[info->ray.texture_id].height
-				- 1);
-		info->texture[info->ray.texture_id].texpos
-			+= info->texture[info->ray.texture_id].step;
+		info->texture[info->ray.texture_id].tex_y = \
+			(int)info->texture[info->ray.texture_id].texpos \
+			& (info->texture[info->ray.texture_id].height - 1);
+		info->texture[info->ray.texture_id].texpos += \
+			info->texture[info->ray.texture_id].step;
 		if (x >= 0 && x < info->mlx->width && y >= 0 && y < info->mlx->height)
 			pixel_color = get_pix_color(info->texture[info->ray.texture_id],
 					info->texture[info->ray.texture_id].tex_x,

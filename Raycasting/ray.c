@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:24:59 by raphael           #+#    #+#             */
-/*   Updated: 2024/12/10 16:44:15 by rcarbonn         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:00:57 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	walk_on_y(t_info *info)
 	}
 }
 
-bool	check_wath_wall_hit(t_info *info, int hit)
+bool	check_wath_wall_hit(t_info *info, int *hit)
 {
 	if (info->map.grid[info->ray.map_y][info->ray.map_x] > '0')
 	{
-		hit = 1;
+		*hit = 1;
 		if (info->ray.side == 0)
 		{
 			if (info->ray.raydir_x > 0)
@@ -87,7 +87,7 @@ void	check_while_wall_hit(t_info *info)
 			info->ray.map_y += info->ray.step_y;
 			info->ray.side = 1;
 		}
-		if (check_wath_wall_hit(info, hit) == TRUE)
+		if (check_wath_wall_hit(info, &hit) == TRUE)
 			hit = 1;
 	}
 }

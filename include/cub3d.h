@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:52:49 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/10 16:52:20 by rcarbonn         ###   ########.fr       */
+/*   Updated: 2024/12/10 17:07:09 by almarico         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,61 +160,61 @@ typedef struct s_window
 
 typedef struct s_player
 {
-	double pos_x;      // Player's _x position
-	double pos_y;      // Player's _y position
-	double dir_x;      // Player's direction vector _x
-	double dir_y;      // Player's direction vector _y
-	double plane_x;    // Camera plane vector _x
-	double plane_y;    // Camera plane vector _y
-	double move_speed; // Movement speed
-	double rot_speed;  // Rotation speed
-	char		facing;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	double	move_speed;
+	double	rot_speed;
+	char	facing;
 }				t_player;
 
 typedef struct s_ray
 {
-	double camera_x;     // direction des rayons dands le champ raydir_x et y;
-	double raydir_x;     // Direction of the ray X
-	double raydir_y;     // Direction of the ray Y
-	double deltadist_x;  // Distance ray travels to cross a grid cell X
-	double deltadist_y;  // Distance ray travels to cross a grid cell Y
-	double sidedist_x;   // Distance to the first side of the grid X
-	double sidedist_y;   // Distance to the first side of the grid Y
-	double perpwalldist; // Perpendicular distance to the wall
-	int step_x;          // Step direction in X (+1 or -1)
-	int step_y;          // Step direction in Y (+1 or -1)
-	int map_x;           // Current grid cell X
-	int map_y;           // Current grid cell Y
-	int side;            // 0 for vertical wall, 1 for horizontal wall
-	int			texture_id;
+	double	camera_x;
+	double	raydir_x;
+	double	raydir_y;
+	double	deltadist_x;
+	double	deltadist_y;
+	double	sidedist_x;
+	double	sidedist_y;
+	double	perpwalldist;
+	int		step_x;
+	int		step_y;
+	int		map_x;
+	int		map_y;
+	int		side;
+	int		texture_id;
 }				t_ray;
 typedef struct s_texture
 {
 	t_img_info	img;
-	int width;     // Width of the texture
-	int height;    // Height of the texture
-	double wall_x; // Exact X coordinate of the wall hit
-	int tex_x;     // X coordinate in the texture
-	int tex_y;     // Y coordinate in the texture
-	double step;   // Step size for sampling the texture
-	double texpos; // Current position in the texture
+	int			width;
+	int			height;
+	double		wall_x;
+	int			tex_x;
+	int			tex_y;
+	double		step;
+	double		texpos;
 }				t_texture;
 typedef struct s_map
 {
-	char **grid; // 2D array representing the map
-	int width;   // Map width
-	int height;  // Map height
+	char		**grid;
+	int			width;
+	int			height;
 	int			ceiling_color;
 	int			floor_color;
 }				t_map;
 
 typedef struct s_render
 {
-	int screenwidth;  // Screen width
-	int screenheight; // Screen height
-	int lineheight;   // Height of the wall slice
-	int drawstart;    // Start point for drawing the wall slice
-	int drawend;      // End point for drawing the wall slice
+	int	screenwidth;
+	int	screenheight;
+	int	lineheight;
+	int	drawstart;
+	int	drawend;
 }				t_render;
 
 /* global structure */
@@ -222,17 +222,17 @@ typedef struct s_render
 typedef struct s_info
 {
 	t_window	*mlx;
-	t_player player; // Player information
-	t_ray ray;       // Raycasting variables
-	t_map map;       // Map data
-	t_render render; // Rendering parameters
+	t_player	player;
+	t_ray		ray;
+	t_map		map;
+	t_render	render;
 	double		time;
 	double		old_time;
 	double		frametime;
-	t_texture texture[4]; // Texture data
-	int **buffer;         // Framebuffer for rendering
+	t_texture	texture[4];
+	int			**buffer;
 	int			buffer_size;
-	int isrunning;	// Game loop flag
+	int			isrunning;
 }				t_info;
 
 typedef struct s_parse
@@ -254,7 +254,7 @@ void			walk_on_x(t_info *info);
 void			walk_on_y(t_info *info);
 void			check_projection_on_cameradist(t_info *info);
 void			check_while_wall_hit(t_info *info);
-bool			check_wath_wall_hit(t_info *info, int hit);
+bool			check_wath_wall_hit(t_info *info, int *hit);
 
 //	raycasting_entry.c
 int				raycasting_entry(t_info *info);
@@ -262,7 +262,7 @@ int				raycasting_entry(t_info *info);
 //	raycasting.c
 void			redraw_and_clear_window(t_info *info);
 int				game_loop(t_info *info);
-void		clear_image(t_info *info);
+void			clear_image(t_info *info);
 
 //	utils_move_player.c
 
@@ -278,7 +278,7 @@ void			render_tall_for_texture(t_info *info);
 void			calculate_ray_step_and_distances(t_info *info);
 void			draw_wall_slice3(t_info *info, int x, t_img_info *img);
 void			draw_wall(t_info *info, int x);
-int	get_pix_color(t_texture texture, int x, int y);
+int				get_pix_color(t_texture texture, int x, int y);
 
 // player move
 
