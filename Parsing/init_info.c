@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
+/*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 15:31:26 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/09 13:23:31 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:31:01 by rcarbonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	init_player_and_ray(t_info *info)
 	info->player.dir_y = 0;
 	info->player.plane_x = 0;
 	info->player.plane_y = 0;
-    info->player.move_speed = 0.10;
-    info->player.rot_speed = 0.07;
+	info->player.move_speed = 0.10;
+	info->player.rot_speed = 0.07;
 	info->player.facing = 0;
 	info->ray.raydir_x = -1;
 	info->ray.raydir_y = -1;

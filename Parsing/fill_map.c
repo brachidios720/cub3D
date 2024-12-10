@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almarico <almarico@student.42lehavre.fr>   +#+  +:+       +#+        */
+/*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:43:21 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/09 13:21:01 by almarico         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:30:41 by rcarbonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 int	everything_is_set(t_info *info)
 {
-	if (!info->texture[T_NORTH].img.img_ptr || !info->texture[T_EAST].img.img_ptr
-		|| !info->texture[T_SOUTH].img.img_ptr || !info->texture[T_WEST].img.img_ptr)
+	if (!info->texture[T_NORTH].img.img_ptr
+		|| !info->texture[T_EAST].img.img_ptr
+		|| !info->texture[T_SOUTH].img.img_ptr
+		|| !info->texture[T_WEST].img.img_ptr)
 		return (FAIL);
 	if (info->map.floor_color == -1 || info->map.ceiling_color == -1)
 		return (FAIL);
@@ -32,8 +34,8 @@ int	fill_map(t_info *info, t_parse *parsing, int *i)
 		return (FAIL);
 	while (parsing->tab[*i])
 	{
-		if (contain_only_isspace(parsing->tab[*i]) == TRUE
-			&& parsing->tab[*i + 1] != NULL)
+		if (contain_only_isspace(parsing->tab[*i]) == TRUE && parsing->tab[*i \
+			+ 1] != NULL)
 			return (free_double_tab(parsing->tab), FAIL);
 		(*i)++;
 	}

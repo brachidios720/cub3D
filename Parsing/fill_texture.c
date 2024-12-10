@@ -6,7 +6,7 @@
 /*   By: rcarbonn <rcarbonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 20:43:41 by almarico          #+#    #+#             */
-/*   Updated: 2024/12/10 15:25:09 by rcarbonn         ###   ########.fr       */
+/*   Updated: 2024/12/10 15:32:47 by rcarbonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ static int	get_texture(t_info *info, t_texture *texture, char *line)
 	texture->img.img_data_address = mlx_get_data_addr(texture->img.img_ptr,
 			&texture->img.bits_per_pixel, &texture->img.size_line,
 			&texture->img.endian);
-	free(filename);
-	return (SUCCESS);
+	return (free(filename), SUCCESS);
 }
 
 int	fill_texture(t_info *info, char *line)
